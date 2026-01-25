@@ -265,14 +265,14 @@ const PPMChatbot = () => {
   return (
     <>
       <div className="fixed bottom-8 right-8 z-50 flex flex-col items-end gap-3">
-        {/* Greeting Bubble - Only shows when chat is CLOSED */}
+        {/* Greeting Bubble */}
         {!isOpen && (
           <div className="bg-white px-4 py-3 rounded-2xl rounded-br-none shadow-xl border border-stone-100 animate-in slide-in-from-right-4 fade-in duration-500 mb-1 max-w-[200px]">
              <p className="text-sm font-semibold text-stone-800 leading-tight">Hi! How may I help you?</p>
           </div>
         )}
 
-        {/* Bigger Toggle Button */}
+        {/* Toggle Button */}
         <button 
           onClick={() => setIsOpen(!isOpen)}
           className="bg-green-600 hover:bg-green-700 text-white p-5 rounded-full shadow-2xl transition-all duration-300 transform hover:scale-105 flex items-center justify-center group"
@@ -302,7 +302,7 @@ const PPMChatbot = () => {
             </div>
           </div>
 
-          {/* Messages Area - With SCROLL CONTAINMENT */}
+          {/* Messages Area */}
           <div className="flex-1 overflow-y-auto overscroll-contain p-4 bg-stone-50 space-y-4">
             {messages.map((msg, idx) => (
               <div key={idx} className={`flex ${msg.type === 'user' ? 'justify-end' : 'justify-start'}`}>
@@ -323,7 +323,7 @@ const PPMChatbot = () => {
             <div ref={messagesEndRef} />
           </div>
 
-          {/* Quick Actions (Recommendation Boxes) */}
+          {/* Quick Actions */}
           <div className="px-4 py-2 bg-stone-50 overflow-x-auto whitespace-nowrap scrollbar-hide border-t border-stone-200 flex-shrink-0">
             {quickActions.map((action, i) => (
               <button 
@@ -677,7 +677,7 @@ const PPMWebsite = () => {
           <div className="w-full h-[400px] rounded-2xl overflow-hidden shadow-lg border border-stone-200">
             <iframe 
               title="Factory Location Map" 
-              src="https://googleusercontent.com/maps.google.com/2" 
+              src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3501.719023914465!2d77.30987707617233!3d28.638182075661618!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjjCsDM4JzE3LjYiTiA3N8KwMTgnNDUuNCJF!5e0!3m2!1sen!2sin!4v1769325176732!5m2!1sen!2sin"
               width="100%" 
               height="100%" 
               style={{ border: 0 }} 
