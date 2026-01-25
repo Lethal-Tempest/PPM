@@ -12,7 +12,7 @@ const content = {
     },
     about: {
       title: "About PPM",
-      desc: "PPM (Precision Plastic Moulders) is a premier exporter of sustainable, organic substrates. We provide high-quality Coir Pith and Coco Peat blocks to nurseries, hydroponic farms, and agricultural distributors worldwide.",
+      desc: "PPM is a premier exporter of sustainable, organic substrates. We provide high-quality Coir Pith and Coco Peat blocks to nurseries, hydroponic farms, and agricultural distributors worldwide.",
       tagline: "100% Organic • Eco-Friendly • Sustainable"
     },
     products: {
@@ -48,7 +48,7 @@ const content = {
     location: {
       title: "Visit Us",
       address_title: "Factory Address:",
-      address: "Precision Plastic Moulders, Patparganj Industrial Area, Delhi-110092, India"
+      address: "PPM, Patparganj Industrial Area, Delhi-110092, India"
     }
   },
   es: { // Spanish
@@ -86,7 +86,7 @@ const content = {
       fields: { name: "Nombre Completo", phone: "Teléfono", address: "Dirección", country: "País", email: "Correo Electrónico", message: "Mensaje" },
       submit: "Enviar Consulta"
     },
-    location: { title: "Visítenos", address_title: "Dirección de Fábrica:", address: "Precision Plastic Moulders, Patparganj Industrial Area, Delhi-110092, India" }
+    location: { title: "Visítenos", address_title: "Dirección de Fábrica:", address: "PPM, Patparganj Industrial Area, Delhi-110092, India" }
   },
   nl: { // Dutch
     nav: { home: "Home", about: "Over ons", products: "Producten", contact: "Contact", location: "Locatie" },
@@ -123,7 +123,7 @@ const content = {
       fields: { name: "Volledige Naam", phone: "Telefoonnummer", address: "Uw Adres", country: "Land", email: "E-mailadres", message: "Bericht" },
       submit: "Verstuur via E-mail"
     },
-    location: { title: "Bezoek Ons", address_title: "Fabrieksadres:", address: "Precision Plastic Moulders, Patparganj Industrial Area, Delhi-110092, India" }
+    location: { title: "Bezoek Ons", address_title: "Fabrieksadres:", address: "PPM, Patparganj Industrial Area, Delhi-110092, India" }
   },
   fr: { // French
     nav: { home: "Accueil", about: "À propos", products: "Produits", contact: "Contact", location: "Lieu" },
@@ -160,7 +160,7 @@ const content = {
       fields: { name: "Nom Complet", phone: "Téléphone", address: "Votre Adresse", country: "Pays", email: "Adresse Email", message: "Message" },
       submit: "Envoyer par Email"
     },
-    location: { title: "Visitez-nous", address_title: "Adresse de l'usine:", address: "Precision Plastic Moulders, Patparganj Industrial Area, Delhi-110092, India" }
+    location: { title: "Visitez-nous", address_title: "Adresse de l'usine:", address: "PPM, Patparganj Industrial Area, Delhi-110092, India" }
   },
   cn: { // Chinese
     nav: { home: "首页", about: "关于我们", products: "产品", contact: "联系我们", location: "位置" },
@@ -197,7 +197,7 @@ const content = {
       fields: { name: "全名", phone: "电话号码", address: "您的地址", country: "国家", email: "电子邮件", message: "信息 / 具体规格要求" },
       submit: "通过电子邮件发送"
     },
-    location: { title: "访问我们", address_title: "工厂地址:", address: "Precision Plastic Moulders, Patparganj Industrial Area, Delhi-110092, India" }
+    location: { title: "访问我们", address_title: "工厂地址:", address: "PPM, Patparganj Industrial Area, Delhi-110092, India" }
   }
 };
 
@@ -713,7 +713,7 @@ const PPMWebsite = () => {
               
               <div className="flex items-center gap-3 text-stone-300">
                 <MapPin className="w-5 h-5 text-green-600 flex-shrink-0" />
-                <span className="text-sm">Precision Plastic Moulders, Patparganj Industrial Area, Delhi-110092</span>
+                <span className="text-sm">PPM, Patparganj Industrial Area, Delhi-110092</span>
               </div>
 
               <div className="flex items-center gap-3 text-stone-300">
