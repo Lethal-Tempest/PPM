@@ -677,7 +677,7 @@ const PPMWebsite = () => {
           <div className="w-full h-[400px] rounded-2xl overflow-hidden shadow-lg border border-stone-200">
             <iframe 
               title="Factory Location Map" 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.289652874676!2d77.3005!3d28.6211!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cf4de45555555%3A0x1234567890abcdef!2sPatparganj%20Industrial%20Area!5e0!3m2!1sen!2sin!4v1600000000000!5m2!1sen!2sin"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28013.586739986178!2d77.29109743148052!3d28.638801743621006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfb007674b473%3A0xf0cfe8ddbfef8705!2sPPM!5e0!3m2!1sen!2sin!4v1769335269424!5m2!1sen!2sin"
               width="100%" 
               height="100%" 
               style={{ border: 0 }} 
