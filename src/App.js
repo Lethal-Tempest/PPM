@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Menu, X, Globe, Mail, Box, ArrowRight, Anchor, MapPin, Send, Phone, MessageCircle, User, Bot } from 'lucide-react';
+import { Menu, X, Globe, Mail, Box, ArrowRight, Anchor, MapPin, Send, Phone, MessageCircle, Bot } from 'lucide-react';
 
 // --- TRANSLATIONS DATABASE ---
 const content = {
@@ -391,7 +391,7 @@ const PPMWebsite = () => {
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
-      setIsMenuOpen(false); // Close mobile menu if open
+      setIsMenuOpen(false);
     }
   };
 
@@ -421,7 +421,6 @@ const PPMWebsite = () => {
             </div>
 
             <div className="hidden lg:flex items-center space-x-8">
-              {/* Updated to use scrollToSection for smooth scrolling */}
               <button onClick={() => scrollToSection('home')} className="text-stone-600 hover:text-green-700 transition font-medium">{t.nav.home}</button>
               <button onClick={() => scrollToSection('products')} className="text-stone-600 hover:text-green-700 transition font-medium">{t.nav.products}</button>
               <button onClick={() => scrollToSection('enquiry')} className="text-stone-600 hover:text-green-700 transition font-medium">{t.nav.contact}</button>
@@ -452,7 +451,6 @@ const PPMWebsite = () => {
         {isMenuOpen && (
           <div className="lg:hidden bg-white border-b border-stone-200">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-              {/* Updated mobile links too */}
               <button onClick={() => scrollToSection('home')} className="block w-full text-left px-3 py-2 text-stone-600">{t.nav.home}</button>
               <button onClick={() => scrollToSection('products')} className="block w-full text-left px-3 py-2 text-stone-600">{t.nav.products}</button>
               <button onClick={() => scrollToSection('enquiry')} className="block w-full text-left px-3 py-2 text-stone-600">{t.nav.contact}</button>
@@ -512,12 +510,12 @@ const PPMWebsite = () => {
             <p className="text-xl md:text-2xl mb-8 text-stone-100 font-light">
               {t.hero.subtitle}
             </p>
-            <button 
-              onClick={() => scrollToSection('enquiry')}
+            <a 
+              href="#enquiry"
               className="inline-flex items-center px-8 py-4 bg-green-600 hover:bg-green-700 text-white rounded-lg font-semibold transition shadow-lg hover:shadow-xl"
             >
               {t.hero.cta} <ArrowRight className="ml-2 h-5 w-5" />
-            </button>
+            </a>
           </div>
         </div>
       </section>
@@ -679,7 +677,7 @@ const PPMWebsite = () => {
           <div className="w-full h-[400px] rounded-2xl overflow-hidden shadow-lg border border-stone-200">
             <iframe 
               title="Factory Location Map" 
-              src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3501.719023914465!2d77.30987707617233!3d28.638182075661618!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjjCsDM4JzE3LjYiTiA3N8KwMTgnNDUuNCJF!5e0!3m2!1sen!2sin!4v1769325176732!5m2!1sen!2sin" 
+              src="https://googleusercontent.com/maps.google.com/2" 
               width="100%" 
               height="100%" 
               style={{ border: 0 }} 
