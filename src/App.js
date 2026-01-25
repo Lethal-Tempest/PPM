@@ -265,14 +265,14 @@ const PPMChatbot = () => {
   return (
     <>
       <div className="fixed bottom-8 right-8 z-50 flex flex-col items-end gap-3">
-        {/* Greeting Bubble */}
+        {/* Greeting Bubble - Only shows when chat is CLOSED */}
         {!isOpen && (
           <div className="bg-white px-4 py-3 rounded-2xl rounded-br-none shadow-xl border border-stone-100 animate-in slide-in-from-right-4 fade-in duration-500 mb-1 max-w-[200px]">
              <p className="text-sm font-semibold text-stone-800 leading-tight">Hi! How may I help you?</p>
           </div>
         )}
 
-        {/* Toggle Button */}
+        {/* Bigger Toggle Button */}
         <button 
           onClick={() => setIsOpen(!isOpen)}
           className="bg-green-600 hover:bg-green-700 text-white p-5 rounded-full shadow-2xl transition-all duration-300 transform hover:scale-105 flex items-center justify-center group"
@@ -302,7 +302,7 @@ const PPMChatbot = () => {
             </div>
           </div>
 
-          {/* Messages Area */}
+          {/* Messages Area - With SCROLL CONTAINMENT */}
           <div className="flex-1 overflow-y-auto overscroll-contain p-4 bg-stone-50 space-y-4">
             {messages.map((msg, idx) => (
               <div key={idx} className={`flex ${msg.type === 'user' ? 'justify-end' : 'justify-start'}`}>
@@ -323,7 +323,7 @@ const PPMChatbot = () => {
             <div ref={messagesEndRef} />
           </div>
 
-          {/* Quick Actions */}
+          {/* Quick Actions (Recommendation Boxes) */}
           <div className="px-4 py-2 bg-stone-50 overflow-x-auto whitespace-nowrap scrollbar-hide border-t border-stone-200 flex-shrink-0">
             {quickActions.map((action, i) => (
               <button 
@@ -677,7 +677,8 @@ const PPMWebsite = () => {
           <div className="w-full h-[400px] rounded-2xl overflow-hidden shadow-lg border border-stone-200">
             <iframe 
               title="Factory Location Map" 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3501.7176922644267!2d77.31003607617221!3d28.638221975661676!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfb007674b473%3A0xf0cfe8ddbfef8705!2sPPM!5e0!3m2!1sen!2sin!4v1769331378977!5m2!1sen!2sin"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.289652874676!2d77.3005!3d28.6211!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cf4de45555555%3A0x1234567890abcdef!2sPatparganj%20Industrial%20Area!5e0!3m2!1sen!2sin!4v1600000000000!5m2!1sen!2sin"
+              width="100%" 
               height="100%" 
               style={{ border: 0 }} 
               allowFullScreen="" 
@@ -717,7 +718,7 @@ const PPMWebsite = () => {
 
               <div className="flex items-center gap-3 text-stone-300">
                 <Mail className="w-5 h-5 text-green-600 flex-shrink-0" />
-                <a href="mailto:ppmcocopeat@gmail.com" className="text-sm hover:text-white transition">inquiry@ppm.com</a>
+                <a href="mailto:ppmcocopeat@gmail.com" className="text-sm hover:text-white transition">ppmcocopeat@gmail.com</a>
               </div>
 
               <div className="flex items-center gap-3 text-stone-300">
