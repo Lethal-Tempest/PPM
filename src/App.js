@@ -237,7 +237,7 @@ const PPMChatbot = () => {
 
     // 2. Determine Response (Rule-based)
     setTimeout(() => {
-      let botResponse = "I'm not sure about that. Please email us at inquiry@ppm.com for specific details.";
+      let botResponse = "I'm not sure about that. Please email us at ppmcocopeat@gmail.com for specific details.";
       const lowerText = text.toLowerCase();
 
       // Logic Rules
@@ -404,7 +404,7 @@ const PPMWebsite = () => {
     e.preventDefault();
     const subject = `New Inquiry from ${formData.name} - PPM Website`;
     const body = `Name: ${formData.name}%0D%0APhone: ${formData.phone}%0D%0AAddress: ${formData.address}%0D%0ACountry: ${formData.country}%0D%0AEmail: ${formData.email}%0D%0A%0D%0AMessage:%0D%0A${formData.message}`;
-    window.location.href = `mailto:inquiry@ppm.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:ppmcocopeat@gmail.com?subject=${subject}&body=${body}`;
   };
 
   const t = content[lang];
@@ -677,8 +677,7 @@ const PPMWebsite = () => {
           <div className="w-full h-[400px] rounded-2xl overflow-hidden shadow-lg border border-stone-200">
             <iframe 
               title="Factory Location Map" 
-              src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3501.719023914465!2d77.30987707617233!3d28.638182075661618!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjjCsDM4JzE3LjYiTiA3N8KwMTgnNDUuNCJF!5e0!3m2!1sen!2sin!4v1769325176732!5m2!1sen!2sin"
-              width="100%" 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3501.7176922644267!2d77.31003607617221!3d28.638221975661676!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfb007674b473%3A0xf0cfe8ddbfef8705!2sPPM!5e0!3m2!1sen!2sin!4v1769331378977!5m2!1sen!2sin"
               height="100%" 
               style={{ border: 0 }} 
               allowFullScreen="" 
@@ -718,7 +717,7 @@ const PPMWebsite = () => {
 
               <div className="flex items-center gap-3 text-stone-300">
                 <Mail className="w-5 h-5 text-green-600 flex-shrink-0" />
-                <a href="mailto:inquiry@ppm.com" className="text-sm hover:text-white transition">inquiry@ppm.com</a>
+                <a href="mailto:ppmcocopeat@gmail.com" className="text-sm hover:text-white transition">inquiry@ppm.com</a>
               </div>
 
               <div className="flex items-center gap-3 text-stone-300">
