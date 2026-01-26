@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Menu, X, Globe, Mail, Box, ArrowRight, Anchor, MapPin, Send, Phone, MessageCircle, Bot } from 'lucide-react';
+import { Menu, X, Globe, Mail, Box, ArrowRight, Anchor, MapPin, Send, Phone, MessageCircle, Bot, Hash } from 'lucide-react';
 
 // --- TRANSLATIONS DATABASE ---
 const content = {
@@ -22,12 +22,14 @@ const content = {
           name: "Washed Coir Pith (Coco Peat)",
           desc: "Standard washed coir pith blocks. High water retention, low EC, and excellent aeration for general gardening and open-field agriculture.",
           use: "Best for: Potting Soil, Landscaping, Soil Conditioning",
+          hsn: "53050040",
           img: "/assets/coco-block.jpeg"
         },
         {
           name: "Buffered Coir Blocks",
           desc: "Chemically treated with Calcium Nitrate to remove sodium and potassium. Super low EC, pH balanced, and stable structure.",
           use: "Best for: Hydroponics, Professional Grow Bags, Sensitive Crops",
+          hsn: "53050040",
           img: "/assets/coco-brick.jpeg"
         }
       ]
@@ -70,12 +72,14 @@ const content = {
           name: "Bloques de Fibra de Coco (Lavado)", 
           desc: "Bloques de coco estándar lavados. Alta retención de agua, baja conductividad eléctrica (EC) y excelente aireación.", 
           use: "Ideal para: Tierra para macetas, Paisajismo", 
+          hsn: "53050040",
           img: "/assets/coco-block.jpeg" 
         },
         { 
           name: "Bloques de Coco Tamponados (Buffered)", 
           desc: "Tratados con Nitrato de Calcio para eliminar sodio. EC muy baja, pH equilibrado.", 
           use: "Ideal para: Hidroponía, Bolsas de cultivo", 
+          hsn: "53050040",
           img: "/assets/coco-brick.jpeg" 
         }
       ]
@@ -107,12 +111,14 @@ const content = {
           name: "Gewassen Kokosgruis (Coco Peat)", 
           desc: "Standaard gewassen kokosblokken. Hoge waterretentie en uitstekende luchtigheid.", 
           use: "Geschikt voor: Potgrond, Bodemverbetering", 
+          hsn: "53050040",
           img: "/assets/coco-block.jpeg" 
         },
         { 
           name: "Gebufferde Kokosblokken", 
           desc: "Behandeld met Calciumnitraat. Zeer lage EC, pH-gebalanceerd.", 
           use: "Geschikt voor: Hydrocultuur, Kwekerijen", 
+          hsn: "53050040",
           img: "/assets/coco-brick.jpeg" 
         }
       ]
@@ -144,12 +150,14 @@ const content = {
           name: "Tourbe de Coco Lavée (Washed)", 
           desc: "Blocs de moelle de coco lavés standard. Haute rétention d'eau et excellente aération.", 
           use: "Idéal pour : Terreau, Aménagement paysager", 
+          hsn: "53050040",
           img: "/assets/coco-block.jpeg" 
         },
         { 
           name: "Blocs de Coco Tamponnés (Buffered)", 
           desc: "Traités au nitrate de calcium. EC très faible, pH équilibré.", 
           use: "Idéal pour : Hydroponie, Pépinières", 
+          hsn: "53050040",
           img: "/assets/coco-brick.jpeg" 
         }
       ]
@@ -181,12 +189,14 @@ const content = {
           name: "水洗椰糠砖 (Washed Coco Peat)", 
           desc: "标准水洗椰糠块。高保水性，低EC值，优良的透气性。", 
           use: "适用于：盆栽土，园林绿化", 
+          hsn: "53050040",
           img: "/assets/coco-block.jpeg" 
         },
         { 
           name: "缓冲处理椰糠砖 (Buffered)", 
           desc: "经过硝酸钙缓冲处理。超低EC值，pH平衡。", 
           use: "适用于：水培，专业种植袋", 
+          hsn: "53050040",
           img: "/assets/coco-brick.jpeg" 
         }
       ]
@@ -577,9 +587,18 @@ const PPMWebsite = () => {
                     <h3 className="text-2xl font-bold text-stone-800">{item.name}</h3>
                   </div>
                   <p className="text-stone-600 mb-6 text-lg leading-relaxed flex-1">{item.desc}</p>
-                  <div className="text-sm font-semibold text-green-700 bg-green-50 px-4 py-3 rounded-lg border border-green-100">
-                    {item.use}
+                  
+                  <div className="flex flex-col gap-3">
+                    <div className="text-sm font-semibold text-green-700 bg-green-50 px-4 py-3 rounded-lg border border-green-100">
+                      {item.use}
+                    </div>
+                    {/* HSN CODE DISPLAY */}
+                    <div className="flex items-center gap-2 text-xs text-stone-400 pl-1">
+                      <Hash className="w-3 h-3" />
+                      <span className="font-mono tracking-wide">HSN: {item.hsn}</span>
+                    </div>
                   </div>
+
                 </div>
               </div>
             ))}
