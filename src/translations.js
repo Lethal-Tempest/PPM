@@ -1,7 +1,7 @@
 export const content = {
   en: {
     meta: {
-      title: "Coco Peat & Coir Pith Exporter India - PPM",
+      title: "Top Coco Peat & Coir Pith Exporter & Supplier in India | PPM",
       desc: "Certified Exporter of Premium Organic Coir Pith, Coco Peat Blocks, and Buffered Coir from India. MSME & RCMC Certified."
     },
     nav: { home: "Home", about: "About", products: "Products", contact: "Contact", location: "Location" },
@@ -56,7 +56,7 @@ export const content = {
   },
   es: {
     meta: {
-      title: "Exportador de Fibra de Coco de India - PPM",
+      title: "Principal Exportador y Proveedor de Fibra de Coco en India | PPM",
       desc: "Exportador certificado de bloques de fibra de coco y sustrato orgánico premium de la India. Certificado MSME y RCMC."
     },
     nav: { home: "Inicio", about: "Nosotros", products: "Productos", contact: "Contacto", location: "Ubicación" },
@@ -100,7 +100,7 @@ export const content = {
   },
   nl: {
     meta: {
-      title: "Exporteur van Kokosgruis & Kokosvezel India - PPM",
+      title: "Top Exporteur & Leverancier van Kokosgruis in India | PPM",
       desc: "Gecertificeerde exporteur van premium organische kokosgruis en kokossubstraten uit India. MSME & RCMC gecertificeerd."
     },
     nav: { home: "Home", about: "Over ons", products: "Producten", contact: "Contact", location: "Locatie" },
@@ -144,7 +144,7 @@ export const content = {
   },
   fr: {
     meta: {
-      title: "Exportateur de Coco Peat & Coir Pith Inde - PPM",
+      title: "Premier Exportateur et Fournisseur de Tourbe de Coco en Inde | PPM",
       desc: "Exportateur certifié de blocs de tourbe de coco organique et de substrats d'Inde. Certifié MSME et RCMC."
     },
     nav: { home: "Accueil", about: "À propos", products: "Produits", contact: "Contact", location: "Lieu" },
@@ -188,7 +188,7 @@ export const content = {
   },
   cn: {
     meta: {
-      title: "印度椰糠和椰壳纤维出口商 - PPM",
+      title: "印度顶尖椰糠和椰壳纤维出口商与供应商 | PPM",
       desc: "来自印度的优质有机椰糠 (Coco Peat) 砖认证出口商。拥有 MSME 和 RCMC 认证。"
     },
     nav: { home: "首页", about: "关于我们", products: "产品", contact: "联系我们", location: "位置" },
@@ -232,7 +232,7 @@ export const content = {
   },
   ko: {
     meta: {
-      title: "인도 코코피트 & 코코아 껍질 수출 업체 - PPM",
+      title: "인도의 최고 코코피트 및 코코아 껍질 수출업체 및 공급업체 | PPM",
       desc: "인도산 프리미엄 유기농 코코피트 및 완충 코코 블록 인증 수출 업체. MSME 및 RCMC 인증."
     },
     nav: { home: "홈", about: "소개", products: "제품", contact: "문의", location: "위치" },
