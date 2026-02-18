@@ -1,215 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { BrowserRouter as Router, Routes, Route, useParams, useNavigate, Navigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 import { Menu, X, Globe, Mail, Box, ArrowRight, Anchor, MapPin, Send, Phone, MessageCircle, Bot, Hash } from 'lucide-react';
-
-// --- TRANSLATIONS DATABASE ---
-const content = {
-  en: {
-    nav: { home: "Home", about: "About", products: "Products", contact: "Contact", location: "Location" },
-    hero: {
-      title: "Nature's Best Substrate",
-      subtitle: "Premium Organic Coir Pith & Coco Peat Blocks for Global Export.",
-      cta: "Get a Quote"
-    },
-    about: {
-      title: "About PPM",
-      desc: "PPM is a premier exporter of sustainable, organic substrates. We provide high-quality Coir Pith and Coco Peat blocks to nurseries, hydroponic farms, and agricultural distributors worldwide.",
-      tagline: "100% Organic • Eco-Friendly • Sustainable"
-    },
-    products: {
-      title: "Our Products",
-      items: [
-        {
-          name: "Washed Coir Pith (Coco Peat)",
-          desc: "Standard washed coir pith blocks. High water retention, low EC, and excellent aeration for general gardening and open-field agriculture.",
-          use: "Best for: Potting Soil, Landscaping, Soil Conditioning",
-          hsn: "53050040",
-          img: "/assets/coco-block.jpeg"
-        },
-        {
-          name: "Buffered Coir Blocks",
-          desc: "Chemically treated with Calcium Nitrate to remove sodium and potassium. Super low EC, pH balanced, and stable structure.",
-          use: "Best for: Hydroponics, Professional Grow Bags, Sensitive Crops",
-          hsn: "53050040",
-          img: "/assets/coco-brick.jpeg"
-        }
-      ]
-    },
-    form: {
-      title: "Send an Enquiry",
-      subtitle: "Fill out the form below and we will get back to you with a CIF/FOB quote.",
-      fields: {
-        name: "Full Name",
-        phone: "Phone Number",
-        address: "Your Address",
-        country: "Country",
-        email: "Email Address",
-        message: "Message / Specific Requirements"
-      },
-      submit: "Send Enquiry via Email"
-    },
-    location: {
-      title: "Visit Us",
-      address_title: "Factory Address:",
-      address: "PPM, Patparganj Industrial Area, Delhi-110092, India"
-    }
-  },
-  es: { // Spanish
-    nav: { home: "Inicio", about: "Nosotros", products: "Productos", contact: "Contacto", location: "Ubicación" },
-    hero: {
-      title: "El Mejor Sustrato de la Naturaleza",
-      subtitle: "Bloques de Fibra de Coco y Sustrato Premium para Exportación Global.",
-      cta: "Solicitar Cotización"
-    },
-    about: {
-      title: "Sobre PPM",
-      desc: "PPM se especializa en la exportación de sustratos orgánicos sostenibles. Suministramos bloques de fibra de coco de alta calidad a viveros y cultivos hidropónicos.",
-      tagline: "100% Orgánico • Ecológico • Sostenible"
-    },
-    products: {
-      title: "Nuestros Productos",
-      items: [
-        { 
-          name: "Bloques de Fibra de Coco (Lavado)", 
-          desc: "Bloques de coco estándar lavados. Alta retención de agua, baja conductividad eléctrica (EC) y excelente aireación.", 
-          use: "Ideal para: Tierra para macetas, Paisajismo", 
-          hsn: "53050040",
-          img: "/assets/coco-block.jpeg" 
-        },
-        { 
-          name: "Bloques de Coco Tamponados (Buffered)", 
-          desc: "Tratados con Nitrato de Calcio para eliminar sodio. EC muy baja, pH equilibrado.", 
-          use: "Ideal para: Hidroponía, Bolsas de cultivo", 
-          hsn: "53050040",
-          img: "/assets/coco-brick.jpeg" 
-        }
-      ]
-    },
-    form: {
-      title: "Envíe una Consulta",
-      subtitle: "Complete el formulario para recibir una cotización CIF/FOB.",
-      fields: { name: "Nombre Completo", phone: "Teléfono", address: "Dirección", country: "País", email: "Correo Electrónico", message: "Mensaje" },
-      submit: "Enviar Consulta"
-    },
-    location: { title: "Visítenos", address_title: "Dirección de Fábrica:", address: "PPM, Patparganj Industrial Area, Delhi-110092, India" }
-  },
-  nl: { // Dutch
-    nav: { home: "Home", about: "Over ons", products: "Producten", contact: "Contact", location: "Locatie" },
-    hero: {
-      title: "Het Beste Substraat van de Natuur",
-      subtitle: "Premium Organische Kokosgruis & Kokosblokken voor Wereldwijde Export.",
-      cta: "Offerte Aanvragen"
-    },
-    about: {
-      title: "Over PPM",
-      desc: "PPM levert hoogwaardige kokosgruis (cocopeat) en kokossubstraten aan kwekerijen en hydrocultuur bedrijven wereldwijd.",
-      tagline: "100% Organisch • Milieuvriendelijk • Duurzaam"
-    },
-    products: {
-      title: "Onze Producten",
-      items: [
-        { 
-          name: "Gewassen Kokosgruis (Coco Peat)", 
-          desc: "Standaard gewassen kokosblokken. Hoge waterretentie en uitstekende luchtigheid.", 
-          use: "Geschikt voor: Potgrond, Bodemverbetering", 
-          hsn: "53050040",
-          img: "/assets/coco-block.jpeg" 
-        },
-        { 
-          name: "Gebufferde Kokosblokken", 
-          desc: "Behandeld met Calciumnitraat. Zeer lage EC, pH-gebalanceerd.", 
-          use: "Geschikt voor: Hydrocultuur, Kwekerijen", 
-          hsn: "53050040",
-          img: "/assets/coco-brick.jpeg" 
-        }
-      ]
-    },
-    form: {
-      title: "Stuur een Aanvraag",
-      subtitle: "Vul het formulier in voor een prijsopgave.",
-      fields: { name: "Volledige Naam", phone: "Telefoonnummer", address: "Uw Adres", country: "Land", email: "E-mailadres", message: "Bericht" },
-      submit: "Verstuur via E-mail"
-    },
-    location: { title: "Bezoek Ons", address_title: "Fabrieksadres:", address: "PPM, Patparganj Industrial Area, Delhi-110092, India" }
-  },
-  fr: { // French
-    nav: { home: "Accueil", about: "À propos", products: "Produits", contact: "Contact", location: "Lieu" },
-    hero: {
-      title: "Le Meilleur Substrat Naturel",
-      subtitle: "Blocs de Tourbe de Coco (Coco Peat) Premium pour l'Exportation Mondiale.",
-      cta: "Demander un Devis"
-    },
-    about: {
-      title: "À propos de PPM",
-      desc: "PPM fournit de la tourbe de coco (moelle de coco) de haute qualité aux pépinières et fermes hydroponiques du monde entier.",
-      tagline: "100% Biologique • Écologique • Durable"
-    },
-    products: {
-      title: "Nos Produits",
-      items: [
-        { 
-          name: "Tourbe de Coco Lavée (Washed)", 
-          desc: "Blocs de moelle de coco lavés standard. Haute rétention d'eau et excellente aération.", 
-          use: "Idéal pour : Terreau, Aménagement paysager", 
-          hsn: "53050040",
-          img: "/assets/coco-block.jpeg" 
-        },
-        { 
-          name: "Blocs de Coco Tamponnés (Buffered)", 
-          desc: "Traités au nitrate de calcium. EC très faible, pH équilibré.", 
-          use: "Idéal pour : Hydroponie, Pépinières", 
-          hsn: "53050040",
-          img: "/assets/coco-brick.jpeg" 
-        }
-      ]
-    },
-    form: {
-      title: "Envoyer une Demande",
-      subtitle: "Remplissez le formulaire ci-dessous pour obtenir un devis CIF/FOB.",
-      fields: { name: "Nom Complet", phone: "Téléphone", address: "Votre Adresse", country: "Pays", email: "Adresse Email", message: "Message" },
-      submit: "Envoyer par Email"
-    },
-    location: { title: "Visitez-nous", address_title: "Adresse de l'usine:", address: "PPM, Patparganj Industrial Area, Delhi-110092, India" }
-  },
-  cn: { // Chinese
-    nav: { home: "首页", about: "关于我们", products: "产品", contact: "联系我们", location: "位置" },
-    hero: {
-      title: "大自然的最佳基质",
-      subtitle: "优质有机椰糠 (Coco Peat) 砖，面向全球出口。",
-      cta: "获取报价"
-    },
-    about: {
-      title: "关于 PPM",
-      desc: "PPM 为世界各地的苗圃和水培农场提供高质量的椰糠和椰壳纤维块。",
-      tagline: "100% 有机 • 环保 • 可持续"
-    },
-    products: {
-      title: "我们的产品",
-      items: [
-        { 
-          name: "水洗椰糠砖 (Washed Coco Peat)", 
-          desc: "标准水洗椰糠块。高保水性，低EC值，优良的透气性。", 
-          use: "适用于：盆栽土，园林绿化", 
-          hsn: "53050040",
-          img: "/assets/coco-block.jpeg" 
-        },
-        { 
-          name: "缓冲处理椰糠砖 (Buffered)", 
-          desc: "经过硝酸钙缓冲处理。超低EC值，pH平衡。", 
-          use: "适用于：水培，专业种植袋", 
-          hsn: "53050040",
-          img: "/assets/coco-brick.jpeg" 
-        }
-      ]
-    },
-    form: {
-      title: "发送询价",
-      subtitle: "填写下表，我们将为您提供 CIF/FOB 报价。",
-      fields: { name: "全名", phone: "电话号码", address: "您的地址", country: "国家", email: "电子邮件", message: "信息 / 具体规格要求" },
-      submit: "通过电子邮件发送"
-    },
-    location: { title: "访问我们", address_title: "工厂地址:", address: "PPM, Patparganj Industrial Area, Delhi-110092, India" }
-  }
-};
+import { content } from './translations';
 
 // --- CHATBOT COMPONENT ---
 const PPMChatbot = () => {
@@ -371,32 +164,70 @@ const PPMChatbot = () => {
   );
 };
 
-// --- MAIN COMPONENT ---
-const PPMWebsite = () => {
-  const [lang, setLang] = useState('en');
+// --- CERTIFICATION BANNER COMPONENT ---
+const CertificationsBanner = ({ t }) => {
+  // Mapping for image filenames
+  const certs = [
+    { file: "msme.png", alt: "MSME Certified" },
+    { file: "gst.webp", alt: "GST Registered" },
+    { file: "epc.webp", alt: "Export Promotion Council" },
+    { file: "rcmc.png", alt: "RCMC Certified" }
+  ];
+
+  return (
+    <div className="bg-white py-12 border-b border-stone-100">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col items-center justify-center gap-8">
+          <p className="text-sm font-bold text-stone-500 uppercase tracking-wider">
+            {t.certifications || "Certified & Recognized By:"}
+          </p>
+          {/* REMOVED grayscale class. INCREASED height to h-24 / h-32 */}
+          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16">
+            {certs.map((cert, idx) => (
+              <div key={idx} className="h-24 md:h-32 flex items-center justify-center">
+                 <img 
+                   src={`/${cert.file}`} 
+                   alt={cert.alt} 
+                   className="h-full w-auto object-contain hover:scale-105 transition-transform duration-300"
+                   onError={(e) => {
+                     e.target.style.display = 'none'; // Hide if image missing
+                     console.error(`Image not found: ${cert.file}`);
+                   }}
+                 />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// --- PAGE COMPONENT (HANDLES CONTENT & SEO) ---
+const PPMPage = () => {
+  const { lang } = useParams();
+  const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  
-  // Form States
   const [formData, setFormData] = useState({
     name: '', phone: '', address: '', country: '', email: '', message: ''
   });
 
+  // Validate Language
+  const currentLang = (lang && content[lang]) ? lang : 'en';
+
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const urlLang = params.get('lang');
-    if (urlLang && ['en', 'nl', 'fr', 'cn', 'es'].includes(urlLang)) {
-      setLang(urlLang);
+    if (!content[lang]) {
+      navigate('/en', { replace: true });
     }
-  }, []);
+  }, [lang, navigate]);
+
+  const t = content[currentLang];
 
   const switchLang = (newLang) => {
-    setLang(newLang);
-    const url = new URL(window.location);
-    url.searchParams.set('lang', newLang);
-    window.history.pushState({}, '', url);
+    navigate(`/${newLang}`);
+    setIsMenuOpen(false);
   };
 
-  // --- SMOOTH SCROLLING FUNCTION ---
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
@@ -417,11 +248,24 @@ const PPMWebsite = () => {
     window.location.href = `mailto:ppmcocopeat@gmail.com?subject=${subject}&body=${body}`;
   };
 
-  const t = content[lang];
-
   return (
     <div className="min-h-screen bg-stone-50 font-sans text-stone-800">
       
+      {/* --- SEO HEADER --- */}
+      <Helmet>
+        <html lang={currentLang} />
+        <title>{t.meta.title}</title>
+        <meta name="description" content={t.meta.desc} />
+        <link rel="canonical" href={`https://ppmimpex.com/${currentLang}`} />
+        <link rel="alternate" hreflang="en" href="https://ppmimpex.com/en" />
+        <link rel="alternate" hreflang="es" href="https://ppmimpex.com/es" />
+        <link rel="alternate" hreflang="nl" href="https://ppmimpex.com/nl" />
+        <link rel="alternate" hreflang="fr" href="https://ppmimpex.com/fr" />
+        <link rel="alternate" hreflang="cn" href="https://ppmimpex.com/cn" />
+        <link rel="alternate" hreflang="ko" href="https://ppmimpex.com/ko" />
+        <link rel="alternate" hreflang="x-default" href="https://ppmimpex.com/en" />
+      </Helmet>
+
       {/* NAVIGATION */}
       <nav className="fixed w-full z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-stone-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -438,11 +282,11 @@ const PPMWebsite = () => {
               
               <div className="flex items-center gap-2 border-l pl-4 border-stone-300">
                 <Globe className="h-4 w-4 text-stone-400" />
-                {['en', 'es', 'nl', 'fr', 'cn'].map((l) => (
+                {['en', 'es', 'nl', 'fr', 'cn', 'ko'].map((l) => (
                   <button 
                     key={l} 
                     onClick={() => switchLang(l)} 
-                    className={`text-sm uppercase ${lang === l ? 'font-bold text-green-700' : 'text-stone-500 hover:text-stone-800'}`}
+                    className={`text-sm uppercase ${currentLang === l ? 'font-bold text-green-700' : 'text-stone-500 hover:text-stone-800'}`}
                   >
                     {l}
                   </button>
@@ -465,8 +309,8 @@ const PPMWebsite = () => {
               <button onClick={() => scrollToSection('products')} className="block w-full text-left px-3 py-2 text-stone-600">{t.nav.products}</button>
               <button onClick={() => scrollToSection('enquiry')} className="block w-full text-left px-3 py-2 text-stone-600">{t.nav.contact}</button>
               <div className="flex gap-4 px-3 py-2 flex-wrap">
-                {['en', 'es', 'nl', 'fr', 'cn'].map((l) => (
-                  <button key={l} onClick={() => {switchLang(l); setIsMenuOpen(false);}} className={`uppercase ${lang === l ? 'font-bold text-green-700' : ''}`}>
+                {['en', 'es', 'nl', 'fr', 'cn', 'ko'].map((l) => (
+                  <button key={l} onClick={() => switchLang(l)} className={`uppercase ${currentLang === l ? 'font-bold text-green-700' : ''}`}>
                     {l}
                   </button>
                 ))}
@@ -486,27 +330,6 @@ const PPMWebsite = () => {
             onError={(e) => {e.target.src='https://images.unsplash.com/photo-1599598425947-32c04085732a?auto=format&fit=crop&q=80&w=2000'}}
           />
           <div className="absolute inset-0 bg-stone-900/40 mix-blend-multiply h-[600px]"></div>
-          
-          {/* --- HIDDEN SEO KEYWORDS BLOCK --- */}
-          <div className="absolute top-0 left-0 opacity-0 -z-20 w-px h-px overflow-hidden">
-            <h1>Global Coco Peat Exporter / Suppliers</h1>
-            <ul>
-              <li>Spanish: Fibra de Coco, Sustrato de Coco, Turba de Coco, Bloques de Coco</li>
-              <li>French: Tourbe de Coco, Moelle de Coco, Fibre de Coco, Substrat de Coco</li>
-              <li>Dutch: Kokosgruis, Kokosbriketten, Kokospeat, Kokosvezel</li>
-              <li>German: Kokosblumenerde, Kokosfasern, Kokosziegel, Kokossubstrat</li>
-              <li>Italian: Fibra di Cocco, Torba di Cocco, Substrato di Cocco</li>
-              <li>Portuguese: Pó de Coco, Turfa de Coco, Substrato de Coco</li>
-              <li>Russian: Кокосовый торф (Kokosoviy torf), Кокосовый субстрат, Кокосовый брикет</li>
-              <li>Chinese: 椰糠 (Yē kāng), 椰糠砖, 椰壳纤维</li>
-              <li>Japanese: ココピート (Kokopīto), ココヤシ</li>
-              <li>Korean: 코코피트 (Kokopiteu)</li>
-              <li>Arabic: بيتموس جوز الهند (Peatmoss), تربة جوز الهند</li>
-              <li>Turkish: Hindistan Cevizi Torfu, Kokopit</li>
-              <li>Polish: Torf kokosowy, Włókno kokosowe</li>
-              <li>Vietnamese: Mụn dừa, Xơ dừa</li>
-            </ul>
-          </div>
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-[600px] flex flex-col justify-center">
@@ -605,6 +428,9 @@ const PPMWebsite = () => {
           </div>
         </div>
       </section>
+
+      {/* --- MOVED CERTIFICATIONS BANNER HERE --- */}
+      <CertificationsBanner t={t} />
 
       {/* ENQUIRY FORM SECTION */}
       <section id="enquiry" className="py-20 bg-stone-100">
@@ -760,4 +586,16 @@ const PPMWebsite = () => {
   );
 };
 
-export default PPMWebsite;
+// --- MAIN APP ROUTING ---
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Navigate to="/en" replace />} />
+        <Route path="/:lang" element={<PPMPage />} />
+      </Routes>
+    </Router>
+  );
+}
+
+export default App;
