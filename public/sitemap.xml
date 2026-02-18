@@ -1,8 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
   <url>
-    <loc>https://www.ppmcocopeat.com/</loc>
+    <loc>https://www.ppmcocopeat.com/en</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ppmcocopeat.com/en"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.ppmcocopeat.com/es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.ppmcocopeat.com/fr"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.ppmcocopeat.com/nl"/>
+    <xhtml:link rel="alternate" hreflang="cn" href="https://www.ppmcocopeat.com/cn"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.ppmcocopeat.com/ko"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ppmcocopeat.com/en"/>
     <priority>1.0</priority>
-    <changefreq>monthly</changefreq>
   </url>
-</urlset>
+
+  <url>
+    <loc>https://www.ppmcocopeat.com/ko</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.ppmcocopeat.com/ko"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ppmcocopeat.com/en"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.ppmcocopeat.com/es"/>
+    <priority>0.8</priority>
+  </url>
+
+  </urlset>
