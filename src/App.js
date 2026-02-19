@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { BrowserRouter as Router, Routes, Route, useParams, useNavigate, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useParams, useNavigate, Navigate, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { Menu, X, Globe, Mail, Box, ArrowRight, Anchor, MapPin, Send, Phone, MessageCircle, Bot, Hash } from 'lucide-react';
 import { content } from './translations';
@@ -181,7 +181,6 @@ const CertificationsBanner = ({ t }) => {
           <p className="text-sm font-bold text-stone-500 uppercase tracking-wider">
             {t.certifications || "Certified & Recognized By:"}
           </p>
-          {/* REMOVED grayscale class. INCREASED height to h-24 / h-32 */}
           <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16">
             {certs.map((cert, idx) => (
               <div key={idx} className="h-24 md:h-32 flex items-center justify-center">
@@ -223,11 +222,6 @@ const PPMPage = () => {
 
   const t = content[currentLang];
 
-  const switchLang = (newLang) => {
-    navigate(`/${newLang}`);
-    setIsMenuOpen(false);
-  };
-
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
@@ -256,14 +250,14 @@ const PPMPage = () => {
         <html lang={currentLang} />
         <title>{t.meta.title}</title>
         <meta name="description" content={t.meta.desc} />
-        <link rel="canonical" href={`https://ppmimpex.com/${currentLang}`} />
-        <link rel="alternate" hreflang="en" href="https://ppmimpex.com/en" />
-        <link rel="alternate" hreflang="es" href="https://ppmimpex.com/es" />
-        <link rel="alternate" hreflang="nl" href="https://ppmimpex.com/nl" />
-        <link rel="alternate" hreflang="fr" href="https://ppmimpex.com/fr" />
-        <link rel="alternate" hreflang="cn" href="https://ppmimpex.com/cn" />
-        <link rel="alternate" hreflang="ko" href="https://ppmimpex.com/ko" />
-        <link rel="alternate" hreflang="x-default" href="https://ppmimpex.com/en" />
+        <link rel="canonical" href={`https://www.ppmcocopeat.com/${currentLang}`} />
+        <link rel="alternate" hreflang="en" href="https://www.ppmcocopeat.com/en" />
+        <link rel="alternate" hreflang="es" href="https://www.ppmcocopeat.com/es" />
+        <link rel="alternate" hreflang="nl" href="https://www.ppmcocopeat.com/nl" />
+        <link rel="alternate" hreflang="fr" href="https://www.ppmcocopeat.com/fr" />
+        <link rel="alternate" hreflang="cn" href="https://www.ppmcocopeat.com/cn" />
+        <link rel="alternate" hreflang="ko" href="https://www.ppmcocopeat.com/ko" />
+        <link rel="alternate" hreflang="x-default" href="https://www.ppmcocopeat.com/en" />
       </Helmet>
 
       {/* NAVIGATION */}
@@ -282,14 +276,16 @@ const PPMPage = () => {
               
               <div className="flex items-center gap-2 border-l pl-4 border-stone-300">
                 <Globe className="h-4 w-4 text-stone-400" />
+                {/* CHANGED FROM BUTTON TO LINK FOR SEO */}
                 {['en', 'es', 'nl', 'fr', 'cn', 'ko'].map((l) => (
-                  <button 
+                  <Link 
                     key={l} 
-                    onClick={() => switchLang(l)} 
+                    to={`/${l}`}
+                    onClick={() => setIsMenuOpen(false)}
                     className={`text-sm uppercase ${currentLang === l ? 'font-bold text-green-700' : 'text-stone-500 hover:text-stone-800'}`}
                   >
                     {l}
-                  </button>
+                  </Link>
                 ))}
               </div>
             </div>
@@ -309,10 +305,16 @@ const PPMPage = () => {
               <button onClick={() => scrollToSection('products')} className="block w-full text-left px-3 py-2 text-stone-600">{t.nav.products}</button>
               <button onClick={() => scrollToSection('enquiry')} className="block w-full text-left px-3 py-2 text-stone-600">{t.nav.contact}</button>
               <div className="flex gap-4 px-3 py-2 flex-wrap">
+                {/* CHANGED FROM BUTTON TO LINK FOR SEO */}
                 {['en', 'es', 'nl', 'fr', 'cn', 'ko'].map((l) => (
-                  <button key={l} onClick={() => switchLang(l)} className={`uppercase ${currentLang === l ? 'font-bold text-green-700' : ''}`}>
+                  <Link 
+                    key={l} 
+                    to={`/${l}`}
+                    onClick={() => setIsMenuOpen(false)}
+                    className={`uppercase ${currentLang === l ? 'font-bold text-green-700' : ''}`}
+                  >
                     {l}
-                  </button>
+                  </Link>
                 ))}
               </div>
             </div>
@@ -576,6 +578,15 @@ const PPMPage = () => {
 
           <div className="border-t border-stone-800 mt-10 pt-8 text-center text-sm opacity-50">
             <p>© 2026 PPM. All rights reserved.</p>
+            {/* HIDDEN SEO LINK BLOCK FOR CRAWLERS */}
+            <div className="mt-4 flex flex-wrap justify-center gap-2 text-xs opacity-0 h-0 overflow-hidden">
+              <Link to="/en">English</Link> | 
+              <Link to="/es">Español</Link> | 
+              <Link to="/ko">한국어</Link> | 
+              <Link to="/fr">Français</Link> | 
+              <Link to="/nl">Nederlands</Link> | 
+              <Link to="/cn">中文</Link>
+            </div>
           </div>
         </div>
       </footer>
