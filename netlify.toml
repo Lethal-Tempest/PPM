@@ -1,0 +1,16 @@
+# Netlify build configuration for PPM Cocopeat
+[build]
+  command = "npm run build"
+  publish = "build"
+
+[build.environment]
+  NODE_VERSION = "20"
+  # Ensure puppeteer (used by react-snap prerendering) downloads its Chromium
+  PUPPETEER_SKIP_DOWNLOAD = "false"
+
+# SPA fallback: serve prerendered files directly; unknown paths -> app shell.
+# (public/_redirects also covers this; kept here for clarity.)
+[[redirects]]
+  from = "/*"
+  to = "/200.html"
+  status = 200
