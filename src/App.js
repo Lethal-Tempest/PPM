@@ -783,7 +783,7 @@ const PPMPage = () => {
             </div>
           </div>
 
-          <div className="border-t border-stone-800 mt-10 pt-8 text-center text-sm opacity-50">
+          <div className="border-t border-stone-800 mt-10 pt-8 text-center text-sm text-stone-400">
             <p>© 2026 PPM. All rights reserved.</p>
             {/* HIDDEN SEO LINK BLOCK FOR CRAWLERS */}
             <div className="mt-4 flex flex-wrap justify-center gap-2 text-xs opacity-0 h-0 overflow-hidden">
