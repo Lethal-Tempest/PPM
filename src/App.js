@@ -81,8 +81,9 @@ const PPMChatbot = () => {
         )}
 
         {/* Bigger Toggle Button */}
-        <button 
+        <button
           onClick={() => setIsOpen(!isOpen)}
+          aria-label={isOpen ? 'Close chat' : 'Open chat assistant'}
           className="bg-green-600 hover:bg-green-700 text-white p-5 rounded-full shadow-2xl transition-all duration-300 transform hover:scale-105 flex items-center justify-center group"
         >
           {isOpen ? (
@@ -152,11 +153,13 @@ const PPMChatbot = () => {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyPress={(e) => e.key === 'Enter' && handleSend()}
+                aria-label="Type your message"
                 placeholder="Type a message..."
                 className="flex-1 px-4 py-2 bg-stone-100 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
               />
-              <button 
+              <button
                 onClick={() => handleSend()}
+                aria-label="Send message"
                 className="bg-green-600 hover:bg-green-700 text-white p-2 rounded-full transition"
               >
                 <Send className="w-4 h-4" />
@@ -382,6 +385,8 @@ const PPMPage = () => {
         <meta name="twitter:title" content={t.meta.title} />
         <meta name="twitter:description" content={t.meta.desc} />
         <meta name="twitter:image" content={ogImage} />
+        {/* Preload the hero (LCP) image */}
+        <link rel="preload" as="image" href="/assets/hero-bg.jpg" fetchpriority="high" />
         {/* Structured data */}
         <script type="application/ld+json">{JSON.stringify(organizationLd)}</script>
         <script type="application/ld+json">{JSON.stringify(websiteLd)}</script>
@@ -426,7 +431,7 @@ const PPMPage = () => {
             </div>
 
             <div className="lg:hidden flex items-center">
-              <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-stone-600">
+              <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-stone-600" aria-label={isMenuOpen ? 'Close menu' : 'Open menu'} aria-expanded={isMenuOpen}>
                 {isMenuOpen ? <X /> : <Menu />}
               </button>
             </div>
@@ -459,12 +464,14 @@ const PPMPage = () => {
         )}
       </nav>
 
+      <main>
       {/* HERO SECTION */}
       <section id="home" className="relative pt-20">
         <div className="absolute inset-0 z-0">
           <img 
             src="/assets/hero-bg.jpg"
-            alt="Coco Peat Farm" 
+            alt="Coco peat and coir substrate production in India"
+            fetchPriority="high"
             className="w-full h-[600px] object-cover opacity-90"
             onError={(e) => {e.target.src='https://images.unsplash.com/photo-1599598425947-32c04085732a?auto=format&fit=crop&q=80&w=2000'}}
           />
@@ -484,7 +491,7 @@ const PPMPage = () => {
             </p>
             <a 
               href="#enquiry"
-              className="inline-flex items-center px-8 py-4 bg-green-600 hover:bg-green-700 text-white rounded-lg font-semibold transition shadow-lg hover:shadow-xl"
+              className="inline-flex items-center px-8 py-4 bg-green-700 hover:bg-green-800 text-white rounded-lg font-semibold transition shadow-lg hover:shadow-xl"
             >
               {t.hero.cta} <ArrowRight className="ml-2 h-5 w-5" />
             </a>
@@ -555,7 +562,7 @@ const PPMPage = () => {
                       {item.use}
                     </div>
                     {/* HSN CODE DISPLAY */}
-                    <div className="flex items-center gap-2 text-xs text-stone-400 pl-1">
+                    <div className="flex items-center gap-2 text-xs text-stone-500 pl-1">
                       <Hash className="w-3 h-3" />
                       <span className="font-mono tracking-wide">HSN: {item.hsn}</span>
                     </div>
@@ -623,7 +630,7 @@ const PPMPage = () => {
               <div>
                 <label className="block text-sm font-semibold text-stone-700 mb-2">{t.form.fields.name}</label>
                 <input 
-                  type="text" name="name" required 
+                  type="text" name="name" required aria-label={t.form.fields.name}
                   className="w-full px-4 py-2 rounded-lg border border-stone-300 focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition"
                   onChange={handleInputChange}
                 />
@@ -631,7 +638,7 @@ const PPMPage = () => {
               <div>
                 <label className="block text-sm font-semibold text-stone-700 mb-2">{t.form.fields.phone}</label>
                 <input 
-                  type="text" name="phone" required 
+                  type="text" name="phone" required aria-label={t.form.fields.phone}
                   className="w-full px-4 py-2 rounded-lg border border-stone-300 focus:ring-2 focus:ring-green-500 outline-none transition"
                   onChange={handleInputChange}
                 />
@@ -642,7 +649,7 @@ const PPMPage = () => {
               <div>
                 <label className="block text-sm font-semibold text-stone-700 mb-2">{t.form.fields.address}</label>
                 <input 
-                  type="text" name="address" required 
+                  type="text" name="address" required aria-label={t.form.fields.address}
                   className="w-full px-4 py-2 rounded-lg border border-stone-300 focus:ring-2 focus:ring-green-500 outline-none transition"
                   onChange={handleInputChange}
                 />
@@ -650,7 +657,7 @@ const PPMPage = () => {
               <div>
                 <label className="block text-sm font-semibold text-stone-700 mb-2">{t.form.fields.country}</label>
                 <input 
-                  type="text" name="country" required 
+                  type="text" name="country" required aria-label={t.form.fields.country}
                   className="w-full px-4 py-2 rounded-lg border border-stone-300 focus:ring-2 focus:ring-green-500 outline-none transition"
                   onChange={handleInputChange}
                 />
@@ -660,7 +667,7 @@ const PPMPage = () => {
             <div className="mb-6">
               <label className="block text-sm font-semibold text-stone-700 mb-2">{t.form.fields.email}</label>
               <input 
-                type="email" name="email" required 
+                type="email" name="email" required aria-label={t.form.fields.email}
                 className="w-full px-4 py-2 rounded-lg border border-stone-300 focus:ring-2 focus:ring-green-500 outline-none transition"
                 onChange={handleInputChange}
               />
@@ -669,7 +676,7 @@ const PPMPage = () => {
             <div className="mb-8">
               <label className="block text-sm font-semibold text-stone-700 mb-2">{t.form.fields.message}</label>
               <textarea 
-                name="message" rows="4" required 
+                name="message" rows="4" required aria-label={t.form.fields.message}
                 className="w-full px-4 py-2 rounded-lg border border-stone-300 focus:ring-2 focus:ring-green-500 outline-none transition"
                 onChange={handleInputChange}
               ></textarea>
@@ -722,6 +729,8 @@ const PPMPage = () => {
         </div>
       </section>
 
+      </main>
+
       {/* FOOTER */}
       <footer className="bg-stone-900 text-stone-400 py-12">
         <div className="max-w-7xl mx-auto px-4">
@@ -733,7 +742,7 @@ const PPMPage = () => {
                 <img src="/logo.png" alt="PPM Impex Logo" className="h-12 w-auto" />
                 <span className="text-stone-200 font-bold text-2xl tracking-wider">PPM</span>
               </div>
-              <p className="text-sm opacity-60 text-center md:text-left max-w-xs">
+              <p className="text-sm text-stone-300 text-center md:text-left max-w-xs">
                 Premium quality Coir Pith and Coco Peat substrates for global agriculture.
               </p>
             </div>
