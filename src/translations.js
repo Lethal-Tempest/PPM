@@ -1,35 +1,36 @@
 export const content = {
   en: {
     meta: {
-      title: "Top Coco Peat & Coir Pith Exporter & Supplier in India | PPM",
-      desc: "Certified Exporter of Premium Organic Coir Pith, Coco Peat Blocks, and Buffered Coir from India. MSME & RCMC Certified."
+      title: "Coco Peat Exporter & Supplier in India | PPM Cocopeat",
+      desc: "Wholesale supplier & exporter of low EC washed coco peat, 5kg coir pith blocks & buffered coir from India. Lab-tested, MSME & RCMC certified. Request a quote."
     },
-    nav: { home: "Home", about: "About", products: "Products", contact: "Contact", location: "Location" },
+    nav: { home: "Home", about: "About", products: "Products", blog: "Blog", contact: "Contact", location: "Location" },
     hero: {
-      title: "Nature's Best Substrate",
-      subtitle: "Premium Organic Coir Pith & Coco Peat Blocks for Global Export.",
-      cta: "Get a Quote"
+      title: "Export-Grade Coco Peat & Coir Blocks from India",
+      subtitle: "Low EC washed coco peat, buffered coir & 5kg blocks — lab-tested and shipped worldwide by container. MSME & RCMC certified exporter.",
+      cta: "Get a Free Quote"
     },
     certifications: "Certified & Recognized By:",
     about: {
-      title: "About PPM",
-      desc: "PPM is a premier exporter of sustainable, organic substrates from India. We are a government-registered export house providing high-quality Coir Pith and Coco Peat blocks to nurseries and hydroponic farms worldwide.",
-      tagline: "100% Organic • Eco-Friendly • Sustainable"
+      title: "About PPM Cocopeat",
+      desc: "PPM Cocopeat is a government-registered (MSME & RCMC certified) exporter of sustainable coir substrates from India. We supply lab-tested low EC coco peat, buffered coir and 5kg coir pith blocks to commercial greenhouses, nurseries, hydroponic farms and soil blenders across South Korea, Europe, the USA, Australia and New Zealand — with full phytosanitary and fumigation documentation on every container.",
+      tagline: "100% Organic • Lab-Tested Low EC • Container Export Ready"
     },
     products: {
-      title: "Our Products",
+      title: "Our Coco Peat & Coir Products",
+      specSheet: "Download Full Specification Sheet (PDF)",
       items: [
         {
-          name: "Washed Coir Pith (Coco Peat)",
-          desc: "Standard washed coir pith blocks. High water retention, low EC, and excellent aeration for general gardening and open-field agriculture.",
-          use: "Best for: Potting Soil, Landscaping, Soil Conditioning",
+          name: "Washed Low EC Coco Peat Blocks (5kg)",
+          desc: "Fresh-water washed coir pith compressed into 5kg blocks. Low EC (<0.5 mS/cm), pH 5.5–6.8, expands to 75–80 litres. High water retention and excellent aeration for nurseries and open-field agriculture.",
+          use: "Best for: Potting Soil, Nurseries, Landscaping, Soil Conditioning",
           hsn: "53050040",
           img: "/assets/coco-block.jpeg"
         },
         {
-          name: "Buffered Coir Blocks",
-          desc: "Chemically treated with Calcium Nitrate to remove sodium and potassium. Super low EC, pH balanced, and stable structure.",
-          use: "Best for: Hydroponics, Professional Grow Bags, Sensitive Crops",
+          name: "Buffered Coir Blocks, Grow Bags & Slabs",
+          desc: "Calcium-nitrate buffered to displace sodium & potassium and prevent nutrient lock-out. Ultra-low EC (<0.8 mS/cm), pH 5.8–6.5, stable structure — the professional standard for hydroponic tomatoes, cucumbers, capsicum and berries.",
+          use: "Best for: Greenhouse Hydroponics, Professional Grow Bags, Sensitive Crops",
           hsn: "53050040",
           img: "/assets/coco-brick.jpeg"
         }
@@ -46,7 +47,39 @@ export const content = {
         email: "Email Address",
         message: "Message / Specific Requirements"
       },
-      submit: "Send Enquiry via Email"
+      submit: "Send Enquiry",
+      sending: "Sending…",
+      success: "Thank you! Your enquiry has been received. Our team will reply with a quote within 24 hours.",
+      error: "We opened your email app as a backup — please press send there, or WhatsApp us."
+    },
+    faq: {
+      title: "Frequently Asked Questions",
+      items: [
+        {
+          q: "What is the minimum order quantity (MOQ) for coco peat?",
+          a: "Our standard MOQ is one full 40ft High Cube container — roughly 4,400–5,000 x 5kg blocks depending on whether it's floor-loaded or palletized. Contact us for consolidated or trial-volume options."
+        },
+        {
+          q: "Do you provide samples before a bulk order?",
+          a: "Yes. We ship a sample block of your chosen grade together with a lab report (EC, pH, moisture, impurity) so you can verify quality before committing to a container."
+        },
+        {
+          q: "What is the EC and pH of your coco peat?",
+          a: "Our washed low-EC blocks are below 0.5 mS/cm with pH 5.5–6.8, and our fully calcium-buffered coir is below 0.8 mS/cm with pH 5.8–6.5. Every shipment includes a batch-specific lab report."
+        },
+        {
+          q: "Which countries do you export to?",
+          a: "We export worldwide, with regular shipments to South Korea, the Netherlands and Europe, the United States, Australia and New Zealand. We quote FOB from Indian ports or CIF to your destination port."
+        },
+        {
+          q: "What documents come with each shipment?",
+          a: "Every container includes a commercial invoice, packing list, certificate of origin, phytosanitary certificate, fumigation certificate and a lab test report — under HS code 53050040."
+        },
+        {
+          q: "Do you offer CIF or FOB pricing?",
+          a: "Both. Share your destination port and target volume and we'll return transparent FOB and CIF quotes with lead times."
+        }
+      ]
     },
     location: {
       title: "Visit Us",
@@ -59,7 +92,7 @@ export const content = {
       title: "Principal Exportador y Proveedor de Fibra de Coco en India | PPM",
       desc: "Exportador certificado de bloques de fibra de coco y sustrato orgánico premium de la India. Certificado MSME y RCMC."
     },
-    nav: { home: "Inicio", about: "Nosotros", products: "Productos", contact: "Contacto", location: "Ubicación" },
+    nav: { home: "Inicio", about: "Nosotros", products: "Productos", blog: "Blog", contact: "Contacto", location: "Ubicación" },
     hero: {
       title: "El Mejor Sustrato de la Naturaleza",
       subtitle: "Bloques de Fibra de Coco y Sustrato Premium para Exportación Global.",
@@ -103,7 +136,7 @@ export const content = {
       title: "Top Exporteur & Leverancier van Kokosgruis in India | PPM",
       desc: "Gecertificeerde exporteur van premium organische kokosgruis en kokossubstraten uit India. MSME & RCMC gecertificeerd."
     },
-    nav: { home: "Home", about: "Over ons", products: "Producten", contact: "Contact", location: "Locatie" },
+    nav: { home: "Home", about: "Over ons", products: "Producten", blog: "Blog", contact: "Contact", location: "Locatie" },
     hero: {
       title: "Het Beste Substraat van de Natuur",
       subtitle: "Premium Organische Kokosgruis & Kokosblokken voor Wereldwijde Export.",
@@ -147,7 +180,7 @@ export const content = {
       title: "Premier Exportateur et Fournisseur de Tourbe de Coco en Inde | PPM",
       desc: "Exportateur certifié de blocs de tourbe de coco organique et de substrats d'Inde. Certifié MSME et RCMC."
     },
-    nav: { home: "Accueil", about: "À propos", products: "Produits", contact: "Contact", location: "Lieu" },
+    nav: { home: "Accueil", about: "À propos", products: "Produits", blog: "Blog", contact: "Contact", location: "Lieu" },
     hero: {
       title: "Le Meilleur Substrat Naturel",
       subtitle: "Blocs de Tourbe de Coco (Coco Peat) Premium pour l'Exportation Mondiale.",
@@ -191,7 +224,7 @@ export const content = {
       title: "印度顶尖椰糠和椰壳纤维出口商与供应商 | PPM",
       desc: "来自印度的优质有机椰糠 (Coco Peat) 砖认证出口商。拥有 MSME 和 RCMC 认证。"
     },
-    nav: { home: "首页", about: "关于我们", products: "产品", contact: "联系我们", location: "位置" },
+    nav: { home: "首页", about: "关于我们", products: "产品", blog: "博客", contact: "联系我们", location: "位置" },
     hero: {
       title: "大自然的最佳基质",
       subtitle: "优质有机椰糠 (Coco Peat) 砖，面向全球出口。",
@@ -235,7 +268,7 @@ export const content = {
       title: "인도의 최고 코코피트 및 코코아 껍질 수출업체 및 공급업체 | PPM",
       desc: "인도산 프리미엄 유기농 코코피트 및 완충 코코 블록 인증 수출 업체. MSME 및 RCMC 인증."
     },
-    nav: { home: "홈", about: "소개", products: "제품", contact: "문의", location: "위치" },
+    nav: { home: "홈", about: "소개", products: "제품", blog: "블로그", contact: "문의", location: "위치" },
     hero: {
       title: "자연이 주는 최고의 배양토",
       subtitle: "전 세계 수출을 위한 프리미엄 유기농 코코피트 및 코코아 껍질 블록.",

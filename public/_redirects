@@ -1,0 +1,4 @@
+# Netlify / Cloudflare Pages SPA fallback.
+# Existing prerendered files (e.g. /blog/<slug>/, /en/, /coco-peat-supplier/<country>/)
+# are served directly; any unknown path falls back to the app shell so React can route.
+/*    /200.html    200

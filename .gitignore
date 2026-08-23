@@ -11,6 +11,9 @@
 # production
 /build
 
+# generated content index (rebuilt from content/blog/*.md on every build)
+/src/blog/generated-posts.js
+
 # misc
 .DS_Store
 .env.local

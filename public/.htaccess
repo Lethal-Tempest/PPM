@@ -1,0 +1,35 @@
+# PPM Cocopeat — Apache config for a prerendered React SPA (Spaceship / cPanel / LiteSpeed)
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # 1) If the exact file exists (e.g. /blog/<slug>/index.html, /en/index.html,
+  #    /assets/*, /static/*, sitemap.xml), serve it as-is. This is what keeps the
+  #    prerendered blog + language pages fully crawlable.
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # 2) Any other (unknown) path -> the SPA shell so React can route client-side.
+  #    200.html is react-snap's un-prerendered shell (falls back to index.html if absent).
+  RewriteRule ^ /200.html [L]
+</IfModule>
+
+# --- Caching (optional but recommended for speed) ---
+<IfModule mod_expires.c>
+  ExpiresActive On
+  # Hashed static assets can be cached hard
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 month"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType image/webp "access plus 1 month"
+  # HTML should revalidate so new deploys show up immediately
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+# --- Gzip compression ---
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json image/svg+xml
+</IfModule>

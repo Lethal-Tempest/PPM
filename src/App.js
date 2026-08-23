@@ -1,8 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { BrowserRouter as Router, Routes, Route, useParams, useNavigate, Navigate, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-import { Menu, X, Globe, Mail, Box, ArrowRight, Anchor, MapPin, Send, Phone, MessageCircle, Bot, Hash } from 'lucide-react';
+import { Menu, X, Globe, Mail, Box, ArrowRight, Anchor, MapPin, Send, Phone, MessageCircle, Bot, Hash, FileText } from 'lucide-react';
 import { content } from './translations';
+import { SITE, waLink, track, LANGS, HREFLANG, WEB3FORMS_KEY } from './config';
+import BlogIndex from './blog/BlogIndex';
+import BlogPost from './blog/BlogPost';
+import MarketsIndex from './markets/MarketsIndex';
+import MarketPage from './markets/MarketPage';
 
 // --- CHATBOT COMPONENT ---
 const PPMChatbot = () => {
@@ -164,6 +169,22 @@ const PPMChatbot = () => {
   );
 };
 
+// --- WHATSAPP FLOATING WIDGET ---
+// Gives GTM's click_whatsapp event a real element to fire on.
+const WhatsAppButton = () => (
+  <a
+    href={waLink("Hi PPM Cocopeat, I'd like a quote for coco peat blocks. My country and target volume are:")}
+    target="_blank"
+    rel="noopener noreferrer"
+    onClick={() => track('click_whatsapp', { link_location: 'floating_widget' })}
+    aria-label="Chat with PPM Cocopeat on WhatsApp"
+    className="fixed bottom-8 left-8 z-50 flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white pl-3 pr-4 py-3 rounded-full shadow-2xl transition-all duration-300 hover:scale-105 group"
+  >
+    <MessageCircle className="w-7 h-7 group-hover:animate-pulse" />
+    <span className="hidden sm:inline font-semibold text-sm pr-1">WhatsApp Us</span>
+  </a>
+);
+
 // --- CERTIFICATION BANNER COMPONENT ---
 const CertificationsBanner = ({ t }) => {
   // Mapping for image filenames
@@ -210,6 +231,7 @@ const PPMPage = () => {
   const [formData, setFormData] = useState({
     name: '', phone: '', address: '', country: '', email: '', message: ''
   });
+  const [formStatus, setFormStatus] = useState('idle'); // idle | sending | success | error
 
   // Validate Language
   const currentLang = (lang && content[lang]) ? lang : 'en';
@@ -235,29 +257,140 @@ const PPMPage = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const sendViaMailto = () => {
     const subject = `New Inquiry from ${formData.name} - PPM Website`;
     const body = `Name: ${formData.name}%0D%0APhone: ${formData.phone}%0D%0AAddress: ${formData.address}%0D%0ACountry: ${formData.country}%0D%0AEmail: ${formData.email}%0D%0A%0D%0AMessage:%0D%0A${formData.message}`;
-    window.location.href = `mailto:ppmcocopeat@gmail.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:${SITE.email}?subject=${subject}&body=${body}`;
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    // GTM conversion event — fires on every completed enquiry submission.
+    track('quote_inquiry_submit', {
+      form_id: 'enquiry',
+      buyer_country: formData.country || 'unknown',
+      language: currentLang,
+    });
+
+    // If no Web3Forms key is configured, keep the original mailto behaviour.
+    if (!WEB3FORMS_KEY) {
+      sendViaMailto();
+      return;
+    }
+
+    setFormStatus('sending');
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: `New Coco Peat Enquiry from ${formData.name} (${formData.country})`,
+          from_name: 'PPM Cocopeat Website',
+          replyto: formData.email, // hitting "Reply" replies straight to the buyer
+          name: formData.name,
+          phone: formData.phone,
+          address: formData.address,
+          country: formData.country,
+          email: formData.email,
+          message: formData.message,
+          language: currentLang,
+        }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setFormStatus('success');
+        setFormData({ name: '', phone: '', address: '', country: '', email: '', message: '' });
+      } else {
+        setFormStatus('error');
+        sendViaMailto();
+      }
+    } catch (err) {
+      setFormStatus('error');
+      sendViaMailto();
+    }
+  };
+
+  const pageUrl = `${SITE.url}/${currentLang}`;
+  const ogImage = `${SITE.url}/assets/coco-block.jpeg`;
+
+  // --- STRUCTURED DATA (Organization + WebSite + Products) ---
+  const organizationLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: SITE.name,
+    legalName: SITE.legalName,
+    url: SITE.url,
+    logo: SITE.logo,
+    email: SITE.email,
+    telephone: SITE.phones[0],
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: SITE.address.street,
+      addressLocality: SITE.address.city,
+      postalCode: SITE.address.postalCode,
+      addressCountry: SITE.address.country,
+    },
+    sameAs: SITE.sameAs,
+  };
+  const websiteLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: SITE.name,
+    url: SITE.url,
+    inLanguage: currentLang,
+  };
+  const productsLd = t.products.items.map((item) => ({
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: item.name,
+    description: item.desc,
+    image: `${SITE.url}${item.img}`,
+    category: "Horticultural Substrate",
+    additionalProperty: [{ "@type": "PropertyValue", name: "HSN Code", value: item.hsn }],
+    brand: { "@type": "Brand", name: SITE.name },
+  }));
+  const faqLd = t.faq && {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: t.faq.items.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
   };
 
   return (
     <div className="min-h-screen bg-stone-50 font-sans text-stone-800">
-      
+
       {/* --- SEO HEADER --- */}
       <Helmet>
         <html lang={currentLang} />
         <title>{t.meta.title}</title>
         <meta name="description" content={t.meta.desc} />
-        <link rel="canonical" href={`https://www.ppmcocopeat.com/${currentLang}`} />
-        <link rel="alternate" hreflang="en" href="https://www.ppmcocopeat.com/en" />
-        <link rel="alternate" hreflang="es" href="https://www.ppmcocopeat.com/es" />
-        <link rel="alternate" hreflang="nl" href="https://www.ppmcocopeat.com/nl" />
-        <link rel="alternate" hreflang="fr" href="https://www.ppmcocopeat.com/fr" />
-        <link rel="alternate" hreflang="cn" href="https://www.ppmcocopeat.com/cn" />
-        <link rel="alternate" hreflang="ko" href="https://www.ppmcocopeat.com/ko" />
-        <link rel="alternate" hreflang="x-default" href="https://www.ppmcocopeat.com/en" />
+        <link rel="canonical" href={pageUrl} />
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content={SITE.name} />
+        <meta property="og:title" content={t.meta.title} />
+        <meta property="og:description" content={t.meta.desc} />
+        <meta property="og:url" content={pageUrl} />
+        <meta property="og:image" content={ogImage} />
+        <meta property="og:locale" content={currentLang} />
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={t.meta.title} />
+        <meta name="twitter:description" content={t.meta.desc} />
+        <meta name="twitter:image" content={ogImage} />
+        {/* Structured data */}
+        <script type="application/ld+json">{JSON.stringify(organizationLd)}</script>
+        <script type="application/ld+json">{JSON.stringify(websiteLd)}</script>
+        <script type="application/ld+json">{JSON.stringify(productsLd)}</script>
+        {faqLd && <script type="application/ld+json">{JSON.stringify(faqLd)}</script>}
+        {LANGS.map((l) => (
+          <link key={l} rel="alternate" hrefLang={HREFLANG[l]} href={`${SITE.url}/${l}`} />
+        ))}
+        <link rel="alternate" hrefLang="x-default" href={`${SITE.url}/en`} />
       </Helmet>
 
       {/* NAVIGATION */}
@@ -271,6 +404,8 @@ const PPMPage = () => {
             <div className="hidden lg:flex items-center space-x-8">
               <button onClick={() => scrollToSection('home')} className="text-stone-600 hover:text-green-700 transition font-medium">{t.nav.home}</button>
               <button onClick={() => scrollToSection('products')} className="text-stone-600 hover:text-green-700 transition font-medium">{t.nav.products}</button>
+              <Link to="/coco-peat-supplier" className="text-stone-600 hover:text-green-700 transition font-medium">{t.nav.markets || 'Markets'}</Link>
+              <Link to="/blog" className="text-stone-600 hover:text-green-700 transition font-medium">{t.nav.blog}</Link>
               <button onClick={() => scrollToSection('enquiry')} className="text-stone-600 hover:text-green-700 transition font-medium">{t.nav.contact}</button>
               <button onClick={() => scrollToSection('location')} className="text-stone-600 hover:text-green-700 transition font-medium">{t.nav.location}</button>
               
@@ -303,6 +438,8 @@ const PPMPage = () => {
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
               <button onClick={() => scrollToSection('home')} className="block w-full text-left px-3 py-2 text-stone-600">{t.nav.home}</button>
               <button onClick={() => scrollToSection('products')} className="block w-full text-left px-3 py-2 text-stone-600">{t.nav.products}</button>
+              <Link to="/coco-peat-supplier" onClick={() => setIsMenuOpen(false)} className="block w-full text-left px-3 py-2 text-stone-600">{t.nav.markets || 'Markets'}</Link>
+              <Link to="/blog" onClick={() => setIsMenuOpen(false)} className="block w-full text-left px-3 py-2 text-stone-600">{t.nav.blog}</Link>
               <button onClick={() => scrollToSection('enquiry')} className="block w-full text-left px-3 py-2 text-stone-600">{t.nav.contact}</button>
               <div className="flex gap-4 px-3 py-2 flex-wrap">
                 {/* CHANGED FROM BUTTON TO LINK FOR SEO */}
@@ -428,11 +565,48 @@ const PPMPage = () => {
               </div>
             ))}
           </div>
+
+          {/* SPEC SHEET DOWNLOAD (tracked as spec_sheet_pdf_download) */}
+          <div className="mt-12 text-center">
+            <a
+              href="/assets/PPM-CocoPeat-Spec-Sheet.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              download
+              onClick={() => track('spec_sheet_pdf_download', { file_name: 'PPM-CocoPeat-Spec-Sheet.pdf' })}
+              className="inline-flex items-center gap-2 px-6 py-3 bg-white border-2 border-green-600 text-green-700 hover:bg-green-50 rounded-lg font-semibold transition shadow-sm"
+            >
+              <FileText className="w-5 h-5" /> {t.products.specSheet || 'Download Full Specification Sheet (PDF)'}
+            </a>
+          </div>
         </div>
       </section>
 
       {/* --- MOVED CERTIFICATIONS BANNER HERE --- */}
       <CertificationsBanner t={t} />
+
+      {/* FAQ SECTION */}
+      {t.faq && (
+        <section id="faq" className="py-20 bg-stone-50">
+          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-10">
+              <h2 className="text-3xl font-bold text-stone-800">{t.faq.title}</h2>
+              <div className="w-24 h-1 bg-green-600 mx-auto rounded-full mt-4"></div>
+            </div>
+            <div className="divide-y divide-stone-200 border-t border-stone-200 bg-white rounded-2xl shadow-sm px-6">
+              {t.faq.items.map((f, i) => (
+                <details key={i} className="group py-5">
+                  <summary className="cursor-pointer list-none flex justify-between items-center text-lg font-semibold text-stone-800">
+                    {f.q}
+                    <span className="ml-4 text-green-600 group-open:rotate-45 transition-transform text-2xl leading-none">+</span>
+                  </summary>
+                  <p className="mt-3 text-stone-600 leading-relaxed">{f.a}</p>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ENQUIRY FORM SECTION */}
       <section id="enquiry" className="py-20 bg-stone-100">
@@ -501,12 +675,24 @@ const PPMPage = () => {
               ></textarea>
             </div>
 
-            <button 
-              type="submit" 
-              className="w-full bg-green-700 hover:bg-green-800 text-white font-bold py-4 rounded-xl transition shadow-md hover:shadow-lg flex justify-center items-center gap-2"
+            <button
+              type="submit"
+              disabled={formStatus === 'sending'}
+              className="w-full bg-green-700 hover:bg-green-800 disabled:opacity-60 text-white font-bold py-4 rounded-xl transition shadow-md hover:shadow-lg flex justify-center items-center gap-2"
             >
-              <Send className="w-5 h-5" /> {t.form.submit}
+              <Send className="w-5 h-5" /> {formStatus === 'sending' ? (t.form.sending || 'Sending…') : t.form.submit}
             </button>
+
+            {formStatus === 'success' && (
+              <div className="mt-4 p-4 bg-green-50 border border-green-200 text-green-800 rounded-lg text-center font-medium">
+                {t.form.success || "Thank you! Your enquiry has been sent. We'll reply with a quote within 24 hours."}
+              </div>
+            )}
+            {formStatus === 'error' && (
+              <div className="mt-4 p-4 bg-amber-50 border border-amber-200 text-amber-800 rounded-lg text-center text-sm">
+                {t.form.error || 'We opened your email app as a backup — please press send there, or WhatsApp us.'}
+              </div>
+            )}
           </form>
         </div>
       </section>
@@ -574,6 +760,18 @@ const PPMPage = () => {
                 <a href="tel:+919899187493" className="text-sm hover:text-white transition">+91 9899187493</a>
               </div>
             </div>
+
+            {/* Explore / internal links */}
+            <div className="flex flex-col items-center md:items-start space-y-3">
+              <h3 className="text-stone-100 font-semibold text-lg border-b border-stone-700 pb-2 mb-2 w-full text-center md:text-left">
+                Explore
+              </h3>
+              <Link to="/coco-peat-supplier" className="text-sm text-stone-300 hover:text-white transition">Export Markets</Link>
+              <Link to="/coco-peat-supplier/south-korea" className="text-sm text-stone-300 hover:text-white transition">Supplier to South Korea</Link>
+              <Link to="/coco-peat-supplier/netherlands" className="text-sm text-stone-300 hover:text-white transition">Supplier to Netherlands</Link>
+              <Link to="/coco-peat-supplier/united-states" className="text-sm text-stone-300 hover:text-white transition">Supplier to USA</Link>
+              <Link to="/blog" className="text-sm text-stone-300 hover:text-white transition">Blog &amp; Guides</Link>
+            </div>
           </div>
 
           <div className="border-t border-stone-800 mt-10 pt-8 text-center text-sm opacity-50">
@@ -593,6 +791,9 @@ const PPMPage = () => {
       
       {/* CHATBOT INTEGRATION */}
       <PPMChatbot />
+
+      {/* WHATSAPP FLOATING WIDGET */}
+      <WhatsAppButton />
     </div>
   );
 };
@@ -603,6 +804,10 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Navigate to="/en" replace />} />
+        <Route path="/blog" element={<BlogIndex />} />
+        <Route path="/blog/:slug" element={<BlogPost />} />
+        <Route path="/coco-peat-supplier" element={<MarketsIndex />} />
+        <Route path="/coco-peat-supplier/:country" element={<MarketPage />} />
         <Route path="/:lang" element={<PPMPage />} />
       </Routes>
     </Router>

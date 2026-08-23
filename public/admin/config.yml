@@ -1,0 +1,47 @@
+# Sveltia CMS configuration
+backend:
+  name: github
+  repo: Lethal-Tempest/PPM      # owner/repo that holds this site
+  branch: main
+  # GitHub login needs a small free OAuth relay. After you deploy the
+  # sveltia-cms-auth Cloudflare Worker (setup guide provided), put its URL here:
+  # base_url: https://your-auth-worker.workers.dev
+
+# Uploaded images are saved here and referenced by the path below.
+media_folder: public/assets
+public_folder: /assets
+
+# Local editing without login: run `npx @sveltia/cms-server` and add ?local=true, or use GitHub login.
+collections:
+  - name: blog
+    label: Blog Posts
+    label_singular: Blog Post
+    description: Write and publish articles for ppmcocopeat.com/blog
+    folder: content/blog
+    create: true
+    delete: true
+    slug: '{{fields.slug}}'
+    extension: md
+    format: frontmatter
+    preview_path: blog/{{fields.slug}}
+    fields:
+      - { label: 'Title (H1)', name: title, widget: string, hint: 'The main headline shown on the article' }
+      - { label: 'Meta Title (SEO — keep under 60 chars)', name: metaTitle, widget: string }
+      - { label: 'Meta Description (SEO — 145–160 chars)', name: metaDescription, widget: text }
+      - { label: 'URL Slug', name: slug, widget: string, hint: 'Becomes ppmcocopeat.com/blog/<slug> — lowercase-with-hyphens' }
+      - { label: 'Focus Keyword', name: focusKeyword, widget: string }
+      - { label: 'Secondary Keywords', name: secondaryKeywords, widget: list, required: false }
+      - { label: 'Excerpt (card summary)', name: excerpt, widget: text }
+      - { label: 'Category', name: category, widget: string, default: 'Guide' }
+      - { label: 'Reading Time', name: readingTime, widget: string, default: '6 min read' }
+      - { label: 'Date', name: date, widget: datetime, date_format: 'YYYY-MM-DD', time_format: false, format: 'YYYY-MM-DD' }
+      - { label: 'Hero Image', name: image, widget: image, default: '/assets/coco-block.jpeg' }
+      - label: 'FAQs (for FAQ rich results)'
+        name: faqs
+        widget: list
+        required: false
+        summary: '{{fields.question}}'
+        fields:
+          - { label: Question, name: question, widget: string }
+          - { label: Answer, name: answer, widget: text }
+      - { label: 'Body', name: body, widget: markdown, hint: 'The article content — headings, tables, links, etc.' }

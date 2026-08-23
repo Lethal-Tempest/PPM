@@ -3,23 +3,64 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@tailwindcss/typography": "^0.5.20",
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
     "@testing-library/user-event": "^13.5.0",
+    "gray-matter": "^4.0.3",
     "lucide-react": "^0.563.0",
+    "markdown-it": "^15.0.0",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
     "react-helmet": "^6.1.0",
+    "react-markdown": "^10.1.0",
     "react-router-dom": "^7.13.0",
     "react-scripts": "5.0.1",
+    "remark-gfm": "^4.0.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "prestart": "node scripts/build-content.js",
     "start": "react-scripts start",
+    "prebuild": "node scripts/build-content.js",
     "build": "react-scripts build",
+    "postbuild": "react-snap",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
+  },
+  "reactSnap": {
+    "source": "build",
+    "inlineCss": false,
+    "concurrency": 1,
+    "crawl": false,
+    "skipThirdPartyRequests": true,
+    "puppeteerArgs": [
+      "--no-sandbox",
+      "--disable-setuid-sandbox"
+    ],
+    "include": [
+      "/en",
+      "/es",
+      "/nl",
+      "/fr",
+      "/cn",
+      "/ko",
+      "/blog",
+      "/coco-peat-supplier",
+      "/coco-peat-supplier/south-korea",
+      "/coco-peat-supplier/netherlands",
+      "/coco-peat-supplier/united-states",
+      "/coco-peat-supplier/australia",
+      "/coco-peat-supplier/new-zealand",
+      "/coco-peat-supplier/spain",
+      "/blog/low-ec-vs-high-ec-coco-peat-procurement-guide",
+      "/blog/import-coco-coir-from-india-phytosanitary-compliance-guide",
+      "/blog/how-to-use-coco-peat-blocks-hydration-guide",
+      "/blog/coco-peat-vs-peat-moss-commercial-growing-comparison",
+      "/blog/coco-peat-for-strawberries-and-tomatoes-substrate-guide",
+      "/blog/5kg-coco-peat-blocks-40ft-container-loading-guide"
+    ]
   },
   "eslintConfig": {
     "extends": [
@@ -31,7 +72,10 @@
     "production": [
       ">0.2%",
       "not dead",
-      "not op_mini all"
+      "not op_mini all",
+      "safari >= 12",
+      "ios_saf >= 12",
+      "chrome >= 73"
     ],
     "development": [
       "last 1 chrome version",
@@ -42,6 +86,7 @@
   "devDependencies": {
     "autoprefixer": "^10.4.23",
     "postcss": "^8.5.6",
+    "react-snap": "^1.23.0",
     "tailwindcss": "^3.4.1"
   }
 }
