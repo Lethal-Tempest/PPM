@@ -2,30 +2,40 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Mail, Phone, MapPin } from "lucide-react";
 import { SITE } from "../config";
+import { blogPath } from "./posts";
+
+const NAV_UI = {
+  en: { products: "Products", markets: "Markets", blog: "Blog", quote: "Get a Quote" },
+  ko: { products: "제품", markets: "수출 시장", blog: "블로그", quote: "견적 요청" },
+  cn: { products: "产品", markets: "出口市场", blog: "博客", quote: "获取报价" },
+};
 
 // Shared header + footer for all blog pages (keeps the SPA nav consistent).
-export const BlogNav = () => (
-  <nav className="fixed w-full z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-stone-100">
-    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="flex justify-between h-20 items-center">
-        <Link to="/en" className="flex items-center gap-2">
-          <img src="/logo.png" alt="PPM Cocopeat Logo" className="h-16 w-auto" />
-        </Link>
-        <div className="flex items-center gap-6">
-          <Link to="/en#products" className="hidden sm:inline text-stone-600 hover:text-green-700 font-medium">Products</Link>
-          <Link to="/coco-peat-supplier" className="hidden sm:inline text-stone-600 hover:text-green-700 font-medium">Markets</Link>
-          <Link to="/blog" className="text-stone-600 hover:text-green-700 font-medium">Blog</Link>
-          <Link
-            to="/en#enquiry"
-            className="inline-flex items-center px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg font-semibold transition"
-          >
-            Get a Quote <ArrowRight className="ml-2 h-4 w-4" />
+export const BlogNav = ({ lang = "en" }) => {
+  const t = NAV_UI[lang] || NAV_UI.en;
+  return (
+    <nav className="fixed w-full z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-stone-100">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between h-20 items-center">
+          <Link to={`/${lang}`} className="flex items-center gap-2">
+            <img src="/logo.png" alt="PPM Cocopeat Logo" className="h-16 w-auto" />
           </Link>
+          <div className="flex items-center gap-6">
+            <Link to={`/${lang}#products`} className="hidden sm:inline text-stone-600 hover:text-green-700 font-medium">{t.products}</Link>
+            <Link to="/coco-peat-supplier" className="hidden sm:inline text-stone-600 hover:text-green-700 font-medium">{t.markets}</Link>
+            <Link to={blogPath(lang)} className="text-stone-600 hover:text-green-700 font-medium">{t.blog}</Link>
+            <Link
+              to={`/${lang}#enquiry`}
+              className="inline-flex items-center px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg font-semibold transition"
+            >
+              {t.quote} <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
+          </div>
         </div>
       </div>
-    </div>
-  </nav>
-);
+    </nav>
+  );
+};
 
 export const BlogFooter = () => (
   <footer className="bg-stone-900 text-stone-400 py-12 mt-16">

@@ -410,7 +410,7 @@ const PPMPage = () => {
               <button onClick={() => scrollToSection('home')} className="text-stone-600 hover:text-green-700 transition font-medium">{t.nav.home}</button>
               <button onClick={() => scrollToSection('products')} className="text-stone-600 hover:text-green-700 transition font-medium">{t.nav.products}</button>
               <Link to="/coco-peat-supplier" className="text-stone-600 hover:text-green-700 transition font-medium">{t.nav.markets || 'Markets'}</Link>
-              <Link to="/blog" className="text-stone-600 hover:text-green-700 transition font-medium">{t.nav.blog}</Link>
+              <Link to={['ko', 'cn'].includes(currentLang) ? `/${currentLang}/blog` : '/blog'} className="text-stone-600 hover:text-green-700 transition font-medium">{t.nav.blog}</Link>
               <button onClick={() => scrollToSection('enquiry')} className="text-stone-600 hover:text-green-700 transition font-medium">{t.nav.contact}</button>
               <button onClick={() => scrollToSection('location')} className="text-stone-600 hover:text-green-700 transition font-medium">{t.nav.location}</button>
               
@@ -444,7 +444,7 @@ const PPMPage = () => {
               <button onClick={() => scrollToSection('home')} className="block w-full text-left px-3 py-2 text-stone-600">{t.nav.home}</button>
               <button onClick={() => scrollToSection('products')} className="block w-full text-left px-3 py-2 text-stone-600">{t.nav.products}</button>
               <Link to="/coco-peat-supplier" onClick={() => setIsMenuOpen(false)} className="block w-full text-left px-3 py-2 text-stone-600">{t.nav.markets || 'Markets'}</Link>
-              <Link to="/blog" onClick={() => setIsMenuOpen(false)} className="block w-full text-left px-3 py-2 text-stone-600">{t.nav.blog}</Link>
+              <Link to={['ko', 'cn'].includes(currentLang) ? `/${currentLang}/blog` : '/blog'} onClick={() => setIsMenuOpen(false)} className="block w-full text-left px-3 py-2 text-stone-600">{t.nav.blog}</Link>
               <button onClick={() => scrollToSection('enquiry')} className="block w-full text-left px-3 py-2 text-stone-600">{t.nav.contact}</button>
               <div className="flex gap-4 px-3 py-2 flex-wrap">
                 {/* CHANGED FROM BUTTON TO LINK FOR SEO */}
@@ -815,6 +815,8 @@ function App() {
         <Route path="/" element={<Navigate to="/en" replace />} />
         <Route path="/blog" element={<BlogIndex />} />
         <Route path="/blog/:slug" element={<BlogPost />} />
+        <Route path="/:lang/blog" element={<BlogIndex />} />
+        <Route path="/:lang/blog/:slug" element={<BlogPost />} />
         <Route path="/coco-peat-supplier" element={<MarketsIndex />} />
         <Route path="/coco-peat-supplier/:country" element={<MarketPage />} />
         <Route path="/:lang" element={<PPMPage />} />

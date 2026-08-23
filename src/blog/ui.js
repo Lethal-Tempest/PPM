@@ -66,35 +66,58 @@ export const Callout = ({ children }) => (
   </div>
 );
 
+// Localized default copy for the CTA block.
+const CTA_UI = {
+  en: {
+    heading: "Ready to source export-grade coco peat?",
+    sub: "Get lab-tested specifications, container pricing (FOB/CIF) and a free sample block shipped to your facility.",
+    quote: "Request a Quote",
+    wa: "Chat on WhatsApp",
+    waMsg: "Hi PPM, I read your blog and would like a quote for coco peat blocks.",
+  },
+  ko: {
+    heading: "수출용 코코피트 공급처를 찾고 계신가요?",
+    sub: "검사 완료된 사양서, 컨테이너 가격(FOB/CIF), 무료 샘플 블록을 시설로 보내드립니다.",
+    quote: "견적 요청",
+    wa: "WhatsApp 문의",
+    waMsg: "안녕하세요 PPM, 블로그를 읽고 코코피트 블록 견적을 문의드립니다.",
+  },
+  cn: {
+    heading: "正在寻找出口级椰糠供应商？",
+    sub: "获取实验室检测规格、整柜价格（FOB/CIF）以及免费样品砖，直接寄送至您的工厂。",
+    quote: "获取报价",
+    wa: "WhatsApp 咨询",
+    waMsg: "您好 PPM，我看了您的博客，想咨询椰糠砖的报价。",
+  },
+};
+
 // High-converting B2B CTA block for the end of every article.
-export const CtaBox = ({ heading, sub }) => (
-  <div className="my-12 p-8 bg-stone-900 rounded-2xl text-center shadow-xl">
-    <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">
-      {heading || "Ready to source export-grade coco peat?"}
-    </h3>
-    <p className="text-stone-300 mb-6 max-w-2xl mx-auto">
-      {sub ||
-        "Get lab-tested specifications, container pricing (FOB/CIF) and a free sample block shipped to your facility."}
-    </p>
-    <div className="flex flex-col sm:flex-row gap-3 justify-center">
-      <Link
-        to="/en#enquiry"
-        className="inline-flex items-center justify-center px-7 py-3.5 bg-green-600 hover:bg-green-700 text-white rounded-lg font-semibold transition shadow-lg"
-      >
-        Request a Quote <ArrowRight className="ml-2 h-5 w-5" />
-      </Link>
-      <a
-        href={waLink("Hi PPM, I read your blog and would like a quote for coco peat blocks.")}
-        target="_blank"
-        rel="noopener noreferrer"
-        onClick={() => track("click_whatsapp", { link_location: "blog_cta" })}
-        className="inline-flex items-center justify-center px-7 py-3.5 bg-white hover:bg-stone-100 text-stone-900 rounded-lg font-semibold transition"
-      >
-        <MessageCircle className="mr-2 h-5 w-5 text-green-600" /> Chat on WhatsApp
-      </a>
+export const CtaBox = ({ heading, sub, lang = "en" }) => {
+  const c = CTA_UI[lang] || CTA_UI.en;
+  return (
+    <div className="my-12 p-8 bg-stone-900 rounded-2xl text-center shadow-xl">
+      <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">{heading || c.heading}</h3>
+      <p className="text-stone-300 mb-6 max-w-2xl mx-auto">{sub || c.sub}</p>
+      <div className="flex flex-col sm:flex-row gap-3 justify-center">
+        <Link
+          to={`/${lang}#enquiry`}
+          className="inline-flex items-center justify-center px-7 py-3.5 bg-green-600 hover:bg-green-700 text-white rounded-lg font-semibold transition shadow-lg"
+        >
+          {c.quote} <ArrowRight className="ml-2 h-5 w-5" />
+        </Link>
+        <a
+          href={waLink(c.waMsg)}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={() => track("click_whatsapp", { link_location: "blog_cta" })}
+          className="inline-flex items-center justify-center px-7 py-3.5 bg-white hover:bg-stone-100 text-stone-900 rounded-lg font-semibold transition"
+        >
+          <MessageCircle className="mr-2 h-5 w-5 text-green-600" /> {c.wa}
+        </a>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 // Renders the FAQ visually (the JSON-LD equivalent is injected separately in BlogPost).
 export const FaqSection = ({ faqs }) => (

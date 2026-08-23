@@ -1,59 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
-
-  <!-- Homepage (all languages share one hreflang cluster) -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://www.ppmcocopeat.com/en</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.ppmcocopeat.com/en"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.ppmcocopeat.com/es"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.ppmcocopeat.com/fr"/>
     <xhtml:link rel="alternate" hreflang="nl" href="https://www.ppmcocopeat.com/nl"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.ppmcocopeat.com/fr"/>
     <xhtml:link rel="alternate" hreflang="zh" href="https://www.ppmcocopeat.com/cn"/>
     <xhtml:link rel="alternate" hreflang="ko" href="https://www.ppmcocopeat.com/ko"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ppmcocopeat.com/en"/>
     <priority>1.0</priority>
   </url>
-  <url><loc>https://www.ppmcocopeat.com/es</loc><priority>0.8</priority></url>
-  <url><loc>https://www.ppmcocopeat.com/fr</loc><priority>0.8</priority></url>
-  <url><loc>https://www.ppmcocopeat.com/nl</loc><priority>0.8</priority></url>
-  <url><loc>https://www.ppmcocopeat.com/cn</loc><priority>0.8</priority></url>
-  <url><loc>https://www.ppmcocopeat.com/ko</loc><priority>0.8</priority></url>
-
-  <!-- Blog -->
-  <url><loc>https://www.ppmcocopeat.com/blog</loc><priority>0.7</priority></url>
   <url>
-    <loc>https://www.ppmcocopeat.com/blog/low-ec-vs-high-ec-coco-peat-procurement-guide</loc>
-    <lastmod>2026-08-22</lastmod>
-    <priority>0.7</priority>
+    <loc>https://www.ppmcocopeat.com/es</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ppmcocopeat.com/en"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.ppmcocopeat.com/es"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.ppmcocopeat.com/nl"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.ppmcocopeat.com/fr"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.ppmcocopeat.com/cn"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.ppmcocopeat.com/ko"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ppmcocopeat.com/en"/>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.ppmcocopeat.com/blog/5kg-coco-peat-blocks-40ft-container-loading-guide</loc>
-    <lastmod>2026-08-22</lastmod>
-    <priority>0.7</priority>
+    <loc>https://www.ppmcocopeat.com/nl</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ppmcocopeat.com/en"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.ppmcocopeat.com/es"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.ppmcocopeat.com/nl"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.ppmcocopeat.com/fr"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.ppmcocopeat.com/cn"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.ppmcocopeat.com/ko"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ppmcocopeat.com/en"/>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.ppmcocopeat.com/blog/import-coco-coir-from-india-phytosanitary-compliance-guide</loc>
-    <lastmod>2026-08-22</lastmod>
-    <priority>0.7</priority>
+    <loc>https://www.ppmcocopeat.com/fr</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ppmcocopeat.com/en"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.ppmcocopeat.com/es"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.ppmcocopeat.com/nl"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.ppmcocopeat.com/fr"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.ppmcocopeat.com/cn"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.ppmcocopeat.com/ko"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ppmcocopeat.com/en"/>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.ppmcocopeat.com/blog/coco-peat-vs-peat-moss-commercial-growing-comparison</loc>
-    <lastmod>2026-08-22</lastmod>
-    <priority>0.7</priority>
+    <loc>https://www.ppmcocopeat.com/cn</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ppmcocopeat.com/en"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.ppmcocopeat.com/es"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.ppmcocopeat.com/nl"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.ppmcocopeat.com/fr"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.ppmcocopeat.com/cn"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.ppmcocopeat.com/ko"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ppmcocopeat.com/en"/>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.ppmcocopeat.com/blog/how-to-use-coco-peat-blocks-hydration-guide</loc>
-    <lastmod>2026-08-22</lastmod>
-    <priority>0.7</priority>
+    <loc>https://www.ppmcocopeat.com/ko</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ppmcocopeat.com/en"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.ppmcocopeat.com/es"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://www.ppmcocopeat.com/nl"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.ppmcocopeat.com/fr"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.ppmcocopeat.com/cn"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.ppmcocopeat.com/ko"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ppmcocopeat.com/en"/>
+    <priority>0.8</priority>
   </url>
-  <url>
-    <loc>https://www.ppmcocopeat.com/blog/coco-peat-for-strawberries-and-tomatoes-substrate-guide</loc>
-    <lastmod>2026-08-22</lastmod>
-    <priority>0.7</priority>
-  </url>
-
-  <!-- Export market landing pages -->
   <url><loc>https://www.ppmcocopeat.com/coco-peat-supplier</loc><priority>0.8</priority></url>
   <url><loc>https://www.ppmcocopeat.com/coco-peat-supplier/south-korea</loc><priority>0.8</priority></url>
   <url><loc>https://www.ppmcocopeat.com/coco-peat-supplier/netherlands</loc><priority>0.8</priority></url>
@@ -61,5 +73,169 @@
   <url><loc>https://www.ppmcocopeat.com/coco-peat-supplier/australia</loc><priority>0.8</priority></url>
   <url><loc>https://www.ppmcocopeat.com/coco-peat-supplier/new-zealand</loc><priority>0.8</priority></url>
   <url><loc>https://www.ppmcocopeat.com/coco-peat-supplier/spain</loc><priority>0.8</priority></url>
-
+  <url><loc>https://www.ppmcocopeat.com/blog</loc><priority>0.7</priority></url>
+  <url><loc>https://www.ppmcocopeat.com/ko/blog</loc><priority>0.7</priority></url>
+  <url><loc>https://www.ppmcocopeat.com/cn/blog</loc><priority>0.7</priority></url>
+  <url>
+    <loc>https://www.ppmcocopeat.com/blog/low-ec-vs-high-ec-coco-peat-procurement-guide</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ppmcocopeat.com/blog/low-ec-vs-high-ec-coco-peat-procurement-guide"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.ppmcocopeat.com/ko/blog/low-ec-vs-high-ec-coco-peat-procurement-guide"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.ppmcocopeat.com/cn/blog/low-ec-vs-high-ec-coco-peat-procurement-guide"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ppmcocopeat.com/blog/low-ec-vs-high-ec-coco-peat-procurement-guide"/>
+    <lastmod>2026-08-22</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.ppmcocopeat.com/ko/blog/low-ec-vs-high-ec-coco-peat-procurement-guide</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ppmcocopeat.com/blog/low-ec-vs-high-ec-coco-peat-procurement-guide"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.ppmcocopeat.com/ko/blog/low-ec-vs-high-ec-coco-peat-procurement-guide"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.ppmcocopeat.com/cn/blog/low-ec-vs-high-ec-coco-peat-procurement-guide"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ppmcocopeat.com/blog/low-ec-vs-high-ec-coco-peat-procurement-guide"/>
+    <lastmod>2026-08-22</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.ppmcocopeat.com/cn/blog/low-ec-vs-high-ec-coco-peat-procurement-guide</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ppmcocopeat.com/blog/low-ec-vs-high-ec-coco-peat-procurement-guide"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.ppmcocopeat.com/ko/blog/low-ec-vs-high-ec-coco-peat-procurement-guide"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.ppmcocopeat.com/cn/blog/low-ec-vs-high-ec-coco-peat-procurement-guide"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ppmcocopeat.com/blog/low-ec-vs-high-ec-coco-peat-procurement-guide"/>
+    <lastmod>2026-08-22</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.ppmcocopeat.com/blog/import-coco-coir-from-india-phytosanitary-compliance-guide</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ppmcocopeat.com/blog/import-coco-coir-from-india-phytosanitary-compliance-guide"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.ppmcocopeat.com/ko/blog/import-coco-coir-from-india-phytosanitary-compliance-guide"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.ppmcocopeat.com/cn/blog/import-coco-coir-from-india-phytosanitary-compliance-guide"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ppmcocopeat.com/blog/import-coco-coir-from-india-phytosanitary-compliance-guide"/>
+    <lastmod>2026-08-22</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.ppmcocopeat.com/ko/blog/import-coco-coir-from-india-phytosanitary-compliance-guide</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ppmcocopeat.com/blog/import-coco-coir-from-india-phytosanitary-compliance-guide"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.ppmcocopeat.com/ko/blog/import-coco-coir-from-india-phytosanitary-compliance-guide"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.ppmcocopeat.com/cn/blog/import-coco-coir-from-india-phytosanitary-compliance-guide"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ppmcocopeat.com/blog/import-coco-coir-from-india-phytosanitary-compliance-guide"/>
+    <lastmod>2026-08-22</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.ppmcocopeat.com/cn/blog/import-coco-coir-from-india-phytosanitary-compliance-guide</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ppmcocopeat.com/blog/import-coco-coir-from-india-phytosanitary-compliance-guide"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.ppmcocopeat.com/ko/blog/import-coco-coir-from-india-phytosanitary-compliance-guide"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.ppmcocopeat.com/cn/blog/import-coco-coir-from-india-phytosanitary-compliance-guide"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ppmcocopeat.com/blog/import-coco-coir-from-india-phytosanitary-compliance-guide"/>
+    <lastmod>2026-08-22</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.ppmcocopeat.com/blog/how-to-use-coco-peat-blocks-hydration-guide</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ppmcocopeat.com/blog/how-to-use-coco-peat-blocks-hydration-guide"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.ppmcocopeat.com/ko/blog/how-to-use-coco-peat-blocks-hydration-guide"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.ppmcocopeat.com/cn/blog/how-to-use-coco-peat-blocks-hydration-guide"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ppmcocopeat.com/blog/how-to-use-coco-peat-blocks-hydration-guide"/>
+    <lastmod>2026-08-22</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.ppmcocopeat.com/ko/blog/how-to-use-coco-peat-blocks-hydration-guide</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ppmcocopeat.com/blog/how-to-use-coco-peat-blocks-hydration-guide"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.ppmcocopeat.com/ko/blog/how-to-use-coco-peat-blocks-hydration-guide"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.ppmcocopeat.com/cn/blog/how-to-use-coco-peat-blocks-hydration-guide"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ppmcocopeat.com/blog/how-to-use-coco-peat-blocks-hydration-guide"/>
+    <lastmod>2026-08-22</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.ppmcocopeat.com/cn/blog/how-to-use-coco-peat-blocks-hydration-guide</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ppmcocopeat.com/blog/how-to-use-coco-peat-blocks-hydration-guide"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.ppmcocopeat.com/ko/blog/how-to-use-coco-peat-blocks-hydration-guide"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.ppmcocopeat.com/cn/blog/how-to-use-coco-peat-blocks-hydration-guide"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ppmcocopeat.com/blog/how-to-use-coco-peat-blocks-hydration-guide"/>
+    <lastmod>2026-08-22</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.ppmcocopeat.com/blog/coco-peat-vs-peat-moss-commercial-growing-comparison</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ppmcocopeat.com/blog/coco-peat-vs-peat-moss-commercial-growing-comparison"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.ppmcocopeat.com/ko/blog/coco-peat-vs-peat-moss-commercial-growing-comparison"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.ppmcocopeat.com/cn/blog/coco-peat-vs-peat-moss-commercial-growing-comparison"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ppmcocopeat.com/blog/coco-peat-vs-peat-moss-commercial-growing-comparison"/>
+    <lastmod>2026-08-22</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.ppmcocopeat.com/ko/blog/coco-peat-vs-peat-moss-commercial-growing-comparison</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ppmcocopeat.com/blog/coco-peat-vs-peat-moss-commercial-growing-comparison"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.ppmcocopeat.com/ko/blog/coco-peat-vs-peat-moss-commercial-growing-comparison"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.ppmcocopeat.com/cn/blog/coco-peat-vs-peat-moss-commercial-growing-comparison"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ppmcocopeat.com/blog/coco-peat-vs-peat-moss-commercial-growing-comparison"/>
+    <lastmod>2026-08-22</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.ppmcocopeat.com/cn/blog/coco-peat-vs-peat-moss-commercial-growing-comparison</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ppmcocopeat.com/blog/coco-peat-vs-peat-moss-commercial-growing-comparison"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.ppmcocopeat.com/ko/blog/coco-peat-vs-peat-moss-commercial-growing-comparison"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.ppmcocopeat.com/cn/blog/coco-peat-vs-peat-moss-commercial-growing-comparison"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ppmcocopeat.com/blog/coco-peat-vs-peat-moss-commercial-growing-comparison"/>
+    <lastmod>2026-08-22</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.ppmcocopeat.com/blog/coco-peat-for-strawberries-and-tomatoes-substrate-guide</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ppmcocopeat.com/blog/coco-peat-for-strawberries-and-tomatoes-substrate-guide"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.ppmcocopeat.com/ko/blog/coco-peat-for-strawberries-and-tomatoes-substrate-guide"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.ppmcocopeat.com/cn/blog/coco-peat-for-strawberries-and-tomatoes-substrate-guide"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ppmcocopeat.com/blog/coco-peat-for-strawberries-and-tomatoes-substrate-guide"/>
+    <lastmod>2026-08-22</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.ppmcocopeat.com/ko/blog/coco-peat-for-strawberries-and-tomatoes-substrate-guide</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ppmcocopeat.com/blog/coco-peat-for-strawberries-and-tomatoes-substrate-guide"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.ppmcocopeat.com/ko/blog/coco-peat-for-strawberries-and-tomatoes-substrate-guide"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.ppmcocopeat.com/cn/blog/coco-peat-for-strawberries-and-tomatoes-substrate-guide"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ppmcocopeat.com/blog/coco-peat-for-strawberries-and-tomatoes-substrate-guide"/>
+    <lastmod>2026-08-22</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.ppmcocopeat.com/cn/blog/coco-peat-for-strawberries-and-tomatoes-substrate-guide</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ppmcocopeat.com/blog/coco-peat-for-strawberries-and-tomatoes-substrate-guide"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.ppmcocopeat.com/ko/blog/coco-peat-for-strawberries-and-tomatoes-substrate-guide"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.ppmcocopeat.com/cn/blog/coco-peat-for-strawberries-and-tomatoes-substrate-guide"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ppmcocopeat.com/blog/coco-peat-for-strawberries-and-tomatoes-substrate-guide"/>
+    <lastmod>2026-08-22</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.ppmcocopeat.com/blog/5kg-coco-peat-blocks-40ft-container-loading-guide</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ppmcocopeat.com/blog/5kg-coco-peat-blocks-40ft-container-loading-guide"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.ppmcocopeat.com/ko/blog/5kg-coco-peat-blocks-40ft-container-loading-guide"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.ppmcocopeat.com/cn/blog/5kg-coco-peat-blocks-40ft-container-loading-guide"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ppmcocopeat.com/blog/5kg-coco-peat-blocks-40ft-container-loading-guide"/>
+    <lastmod>2026-08-22</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.ppmcocopeat.com/ko/blog/5kg-coco-peat-blocks-40ft-container-loading-guide</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ppmcocopeat.com/blog/5kg-coco-peat-blocks-40ft-container-loading-guide"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.ppmcocopeat.com/ko/blog/5kg-coco-peat-blocks-40ft-container-loading-guide"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.ppmcocopeat.com/cn/blog/5kg-coco-peat-blocks-40ft-container-loading-guide"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ppmcocopeat.com/blog/5kg-coco-peat-blocks-40ft-container-loading-guide"/>
+    <lastmod>2026-08-22</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.ppmcocopeat.com/cn/blog/5kg-coco-peat-blocks-40ft-container-loading-guide</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.ppmcocopeat.com/blog/5kg-coco-peat-blocks-40ft-container-loading-guide"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://www.ppmcocopeat.com/ko/blog/5kg-coco-peat-blocks-40ft-container-loading-guide"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.ppmcocopeat.com/cn/blog/5kg-coco-peat-blocks-40ft-container-loading-guide"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.ppmcocopeat.com/blog/5kg-coco-peat-blocks-40ft-container-loading-guide"/>
+    <lastmod>2026-08-22</lastmod>
+    <priority>0.7</priority>
+  </url>
 </urlset>

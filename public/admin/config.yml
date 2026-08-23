@@ -1,47 +1,50 @@
 # Sveltia CMS configuration
 backend:
   name: github
-  repo: Lethal-Tempest/PPM      # owner/repo that holds this site
+  repo: Lethal-Tempest/PPM
   branch: main
-  # GitHub login needs a small free OAuth relay. After you deploy the
-  # sveltia-cms-auth Cloudflare Worker (setup guide provided), put its URL here:
-  # base_url: https://your-auth-worker.workers.dev
 
-# Uploaded images are saved here and referenced by the path below.
 media_folder: public/assets
 public_folder: /assets
 
-# Local editing without login: run `npx @sveltia/cms-server` and add ?local=true, or use GitHub login.
+# Multilingual: English (default), Korean, Chinese. Files live in
+# content/blog/<locale>/<slug>.md — the editor shows one tab per language.
+i18n:
+  structure: multiple_folders
+  locales: [en, ko, cn]
+  default_locale: en
+
 collections:
   - name: blog
     label: Blog Posts
     label_singular: Blog Post
-    description: Write and publish articles for ppmcocopeat.com/blog
+    description: Write and publish articles for ppmcocopeat.com/blog (with Korean & Chinese versions)
     folder: content/blog
     create: true
     delete: true
+    i18n: true
     slug: '{{fields.slug}}'
     extension: md
     format: frontmatter
-    preview_path: blog/{{fields.slug}}
     fields:
-      - { label: 'Title (H1)', name: title, widget: string, hint: 'The main headline shown on the article' }
-      - { label: 'Meta Title (SEO — keep under 60 chars)', name: metaTitle, widget: string }
-      - { label: 'Meta Description (SEO — 145–160 chars)', name: metaDescription, widget: text }
-      - { label: 'URL Slug', name: slug, widget: string, hint: 'Becomes ppmcocopeat.com/blog/<slug> — lowercase-with-hyphens' }
-      - { label: 'Focus Keyword', name: focusKeyword, widget: string }
-      - { label: 'Secondary Keywords', name: secondaryKeywords, widget: list, required: false }
-      - { label: 'Excerpt (card summary)', name: excerpt, widget: text }
-      - { label: 'Category', name: category, widget: string, default: 'Guide' }
-      - { label: 'Reading Time', name: readingTime, widget: string, default: '6 min read' }
-      - { label: 'Date', name: date, widget: datetime, date_format: 'YYYY-MM-DD', time_format: false, format: 'YYYY-MM-DD' }
-      - { label: 'Hero Image', name: image, widget: image, default: '/assets/coco-block.jpeg' }
+      - { label: 'Title (H1)', name: title, widget: string, i18n: true }
+      - { label: 'Meta Title (SEO — keep under 60 chars)', name: metaTitle, widget: string, i18n: true }
+      - { label: 'Meta Description (SEO — 145–160 chars)', name: metaDescription, widget: text, i18n: true }
+      - { label: 'URL Slug', name: slug, widget: string, i18n: duplicate, hint: 'Same across languages — lowercase-with-hyphens' }
+      - { label: 'Focus Keyword', name: focusKeyword, widget: string, i18n: true }
+      - { label: 'Secondary Keywords', name: secondaryKeywords, widget: list, required: false, i18n: true }
+      - { label: 'Excerpt (card summary)', name: excerpt, widget: text, i18n: true }
+      - { label: 'Category', name: category, widget: string, default: 'Guide', i18n: true }
+      - { label: 'Reading Time', name: readingTime, widget: string, default: '6 min read', i18n: true }
+      - { label: 'Date', name: date, widget: datetime, date_format: 'YYYY-MM-DD', time_format: false, format: 'YYYY-MM-DD', i18n: duplicate }
+      - { label: 'Hero Image', name: image, widget: image, default: '/assets/coco-block.jpeg', i18n: duplicate }
       - label: 'FAQs (for FAQ rich results)'
         name: faqs
         widget: list
         required: false
+        i18n: true
         summary: '{{fields.question}}'
         fields:
-          - { label: Question, name: question, widget: string }
-          - { label: Answer, name: answer, widget: text }
-      - { label: 'Body', name: body, widget: markdown, hint: 'The article content — headings, tables, links, etc.' }
+          - { label: Question, name: question, widget: string, i18n: true }
+          - { label: Answer, name: answer, widget: text, i18n: true }
+      - { label: 'Body', name: body, widget: markdown, i18n: true, hint: 'The article content' }
